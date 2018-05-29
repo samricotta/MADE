@@ -21,15 +21,30 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
   end
 
-  def new
-  end
-
   def edit
   end
 
-  private
-
-  def meal_params
-    params.require(:meal).permit(:name, :description, :ingredients, :portions_left, :photo, :cuisine, :dietary)
+  def new
+    @meal = Meal.new
   end
+
+  def create
+    @meal = Meal.new(meal_params)
+    @meal.user = current_user
+    if @meal.save
+      redirect_to meal_path(@meal)
+    else
+      # raise
+      render :new
+    end
+  end
+
+private
+  def meal_params
+    params.require(:meal).permit(:name, :description, :ingredients, :portions_left, :cuisine, :dietary)
+  end
+
+
 end
+
+

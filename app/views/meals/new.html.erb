@@ -1,2 +1,18 @@
-<h1>Meals#new</h1>
-<p>Find me in app/views/meals/new.html.erb</p>
+<div class="wrapper">
+  <div class="content">
+
+    <div class="description text-center">
+      <h1>Add a meal</h1>
+      <p>Sell your homemade food in one click</p>
+    </div>
+
+    <div class="form">
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-3">
+          <%= render "form", meal: @meal %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
