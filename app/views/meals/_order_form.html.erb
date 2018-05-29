@@ -1,0 +1,4 @@
+<%= simple_form_for [@meal, @meal_order] do |f| %>
+  <%= f.input :quantity %>
+  <%= f.submit "add to basket", class: "btn btn-primary" %>
+<% end %>

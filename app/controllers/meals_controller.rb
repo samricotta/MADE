@@ -23,7 +23,8 @@ class MealsController < ApplicationController
   def show
     @meal_review = MealReview.new
     @meal = Meal.find(params[:id])
-  end  
+    @meal_order = MealOrder.new
+  end
 
   def edit
   end
