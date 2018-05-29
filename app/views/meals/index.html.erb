@@ -1,2 +1,20 @@
-<h1>Meals#index</h1>
+<h1>Homemade meals around you</h1>
 <p>Find me in app/views/meals/index.html.erb</p>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <% @meals.each do |meal|  %>
+        <% if meal.photo? %>
+          <%  %>
+        <% else %>
+          <%  %>
+        <% end  %>
+        <div class="meal-card" style=>
+
+        </div>
+      <%= end %>
+    </div>
+  </div>
+</div>
+
