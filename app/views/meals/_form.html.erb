@@ -1,0 +1,16 @@
+<%= simple_form_for(meal) do |f| %>
+  <div class="forminputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :ingredients %>
+    <%# f.input :price %>
+    <%= f.input :portions_left %>
+    <%# f.input :photo %>
+    <%= f.input :cuisine %>
+    <%= f.input :dietary %>
+  </div>
+
+  <div class="text-center">
+    <%= f.button :submit, class: "btn btn-all" %>
+  </div>
+<% end %>
