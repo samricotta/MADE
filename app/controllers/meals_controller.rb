@@ -1,6 +1,6 @@
 class MealsController < ApplicationController
 
-  skip_before_action :authenticate_user!, only: :index
+  skip_before_action :authenticate_user!, only: :index, :show
 
   def index
     if params[:location]
@@ -16,6 +16,7 @@ class MealsController < ApplicationController
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     end
+  end
 
   def show
     @meal = Meal.find(params[:id])
