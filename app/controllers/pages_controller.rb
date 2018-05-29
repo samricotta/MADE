@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def dashboard
+    @meals = current_user.meals
+  end
 end

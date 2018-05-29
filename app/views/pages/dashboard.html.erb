@@ -1,0 +1,13 @@
+<ul>
+
+  <% current_user.meals.each do |meal| %>
+    <li>
+      <p><%= meal.name %></p>
+      <p><%= meal.description %></p>
+      <p><%= meal.portions_left %></p>
+
+      <%= link_to "Delete this meal", meal_path(meal) , method: :delete, data: { confirm: "Are you sure you want to delete this meal?"} %>
+    </li>
+  <% end %>
+
+</ul>
