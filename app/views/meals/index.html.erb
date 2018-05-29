@@ -1,2 +1,31 @@
-<h1>Meals#index</h1>
+<h1>Homemade meals around you</h1>
 <p>Find me in app/views/meals/index.html.erb</p>
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <% @meals.each do |meal|  %>
+        <% if meal.photo? %>
+          <%  %>
+        <% else %>
+          <%  %>
+        <% end  %>
+        <div class="meal-card" style= "background-image:linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(69,68,68,0.8) 100%), url('<%= photo %>')">
+          <div class="meal-card-content">
+           <%= link_to 'back', root_path(bike) %>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+  ></div>
+</div>
+
+

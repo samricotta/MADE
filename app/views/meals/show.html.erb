@@ -1,2 +1,8 @@
-<h1>Meals#show</h1>
+<h1><%= @meal.name%></h1>
 <p>Find me in app/views/meals/show.html.erb</p>
+<p><%= @meal.description %></p>
+<p><%= @meal.ingredients %></p>
+<!-- <p><%= @meal.user.email %></p> -->
+
+<p><%= link_to "index", meals_path%></p>
+<p><%= link_to "home", root_path%></p>

@@ -5,6 +5,14 @@
   <% end %>
 
   <!-- Right Navigation -->
+  <div class="search">
+    <%= form_tag meals_path, :method => 'get' do %>
+      <p>
+        <%= text_field_tag :location, params[:location], class: "nav-inpu" %>
+        <%= submit_tag "Search", :name => nil, class: "btn-all" %>
+      </p>
+    <% end %>
+  </div>
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
     <% if user_signed_in? %>
