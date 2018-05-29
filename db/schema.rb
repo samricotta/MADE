@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-
-ActiveRecord::Schema.define(version: 2018_05_29_111454) do
-
+ActiveRecord::Schema.define(version: 2018_05_29_114215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,14 +76,11 @@ ActiveRecord::Schema.define(version: 2018_05_29_111454) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-
-    t.float "latitude"
-    t.float "longitude"
-
     t.string "first_name"
     t.string "last_name"
-
     t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
