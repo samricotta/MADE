@@ -16,6 +16,7 @@ class MealsController < ApplicationController
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     end
+  end
 
   def show
     @meal = Meal.find(params[:id])
@@ -39,7 +40,8 @@ class MealsController < ApplicationController
     end
   end
 
-private
+  private
+
   def meal_params
     params.require(:meal).permit(:name, :description, :ingredients, :portions_left, :cuisine, :dietary)
   end
