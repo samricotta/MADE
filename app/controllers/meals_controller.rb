@@ -2,6 +2,8 @@ class MealsController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+  before_action :set_meal, only: [:edit, :update, :show]
+
   def index
     if params[:location]
       @meals = User.where("address iLIKE ?", "%#{params[:location]}%").where.not(latitude: nil, longitude: nil).map { |user| user.meals }.flatten
@@ -17,12 +19,19 @@ class MealsController < ApplicationController
       }
     end
   end
+
   def show
     @meal_review = MealReview.new
     @meal = Meal.find(params[:id])
-  end
+  end  
 
   def edit
+  end
+
+  def update
+    meal_params
+    @meal.update(meal_params)
+    redirect_to meal_path(@meal)
   end
 
   def new
@@ -40,12 +49,28 @@ class MealsController < ApplicationController
     end
   end
 
-private
+  def destroy
+    @meal = Meal.find(params[:id])
+    @meal.destroy
+    redirect_to dashboard_path
+  end
+
+  private
+
   def meal_params
     params.require(:meal).permit(:name, :description, :ingredients, :portions_left, :cuisine, :dietary)
   end
 
+  def set_meal
+    @meal = Meal.find(params[:id])
+  end
+
 
 end
+
+
+
+
+
 
 
