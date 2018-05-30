@@ -13,9 +13,23 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">...</div>
+    <div role="tabpanel" class="tab-pane active" id="home"></div>
     <div role="tabpanel" class="tab-pane" id="mealsihaveordered">
-      <ul>
+
+
+      <% current_user.orders.each do |order| %>
+       <%# if order.status == "paid"%>
+        <h3>Order <%= order.id%></h3>
+        <% order.meals.each do |meal|%>
+           <p><%= meal.name %></p>
+           <p><%= meal.description %></p>
+
+          <% end %>
+        <%# end %>
+      <% end %>
+      </div>
+    <div role="tabpanel" class="tab-pane" id="cookedbyme">
+  <ul>
         <% current_user.meals.each do |meal| %>
           <li>
             <p><%= meal.name %></p>
@@ -27,16 +41,7 @@
         <% end %>
       </ul>
     </div>
-    <div role="tabpanel" class="tab-pane" id="cookedbyme">
-     <% current_user.orders.each do |order| %>
-      <li>
-        <p><%= order.meal.name %></p>
-        <p><%= order.meal.description %></p>
-        <p><%= meal.portions_left %></p>
-      </li>
-      <% end %>
-    </div>
-    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+    <div role="tabpanel" class="tab-pane" id="messages"></div>
   </div>
 
 </div>
