@@ -2,22 +2,23 @@ class MealOrdersController < ApplicationController
   def create
     # see if there is an order with status pending and my user id
     # if yes link meal order to the order
+    @meal = Meal.find(params[:meal_id])
     @meal_order = MealOrder.new(meal_order_params)
-    @meal_order.meal_id = params[:meal_id]
+    @meal_order.meal = @meal
 
-    @test = Order.where(user: current_user, status: "pending")
-    if @test.exists?
-      @meal_order.order_id = Order.find(user: current_user, status: "pending")
+    @order = Order.where(user: current_user, status: "pending").first
+    if @order.present?
+      @meal_order.order = @order
     else
     # if not Order.new
-    @order = Order.new
-    @order.user = current_user
-    @order.save
-    @meal_order.order_id = @order.id
+      @order = Order.new
+      @order.user = current_user
+      @order.save
+      @meal_order.order = @order
     end
 
     if @meal_order.save
-      redirect_to meals_path
+      redirect_to order_path(@order)
     else
       redirect_to meal_path(@meal_order.meal)
     end

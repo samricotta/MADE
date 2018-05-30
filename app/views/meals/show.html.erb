@@ -8,6 +8,10 @@
 <p><%= link_to "home", root_path%></p>
 <%= render "order_form"%>
 
+<% if current_user.meal_orders.any? %>
+<%= link_to 'View basket', order_path(current_user.orders.last), :class=> "btn btn-primary" %>
+<% end %>
+
 <!-- if statement must be implemented so that you can only review once ordered -->
 
 <h3>Write your review for <%=@meal.name%> </h3>
