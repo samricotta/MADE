@@ -15,16 +15,17 @@ class MealOrdersController < ApplicationController
       @order.status = 'pending'
       @order.user = current_user
       @order.save
-      @meal_order.order_id = @order.id
+      @meal_order.order = @order
+      @meal_order.save
     end
 
     # update the total amount of order depending on what was added
-    @order.amount += @meal.price
+    @order.amount = @order.amount + @meal.price
     @order.save
 
-    raise
+    # raise
     if @meal_order.save
-      redirect_to meals_path
+      redirect_to order_path(@order)
     else
       redirect_to meal_path(@meal_order.meal)
     end

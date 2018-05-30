@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   end
 
   resources :orders, only: [:show, :create] do
-  resources :payments, only: [:new, :create]
-end
+    resources :payments, only: [:new, :create]
+  end
+
 
   get '/dashboard', to: 'pages#dashboard'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

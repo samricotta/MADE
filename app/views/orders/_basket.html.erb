@@ -1,0 +1,36 @@
+
+
+<%#= form_tag orders_path do %>
+  <%#= hidden_field_tag 'meal_id', @meal.id %>
+  <%#= submit_tag 'Purchase', class: 'btn btn-primary' %>
+<%# end %>
+
+<div class="basket-container">
+  <h1> Basket </h1>
+  <ul>
+    <li>Status: <%= @order.status %></li>
+    <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
+  <ul>
+
+  <div class="content">
+    <% @order.meal_orders.each do |meal_order| %>
+      <div class="row">
+        <div class="col-xs-6 col-xs-offset-4">
+          <%= meal_order.meal.name %>
+          <% if meal_order.meal.dietary.present? %>
+            <%= meal_order.meal.dietary%>
+          <% end %>
+          <%= meal_order.quantity %>
+        </div>
+      </div>
+    <% end %>
+
+
+    <%= link_to "add more recipes", meals_path %>
+   </div>
+   <!-- <div class="amount">
+     @order
+   </div> -->
+
+
+ </div>

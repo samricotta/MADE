@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_05_30_150910) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,7 +58,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_150910) do
   create_table "orders", force: :cascade do |t|
     t.time "pick_up_time"
     t.date "pick_up_date"
-    t.string "status"
+    t.string "status", default: "pending"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
