@@ -1,3 +1,32 @@
+<div class="filters">
+  <div class="search-cuisine">
+    <%= form_tag meals_path, method: :get do %>
+      <%= text_field_tag :cuisine,
+        params[:cuisine],
+        # class: "form-control",
+        placeholder: "Filer by cuisine type"
+      %>
+      <%= text_field_tag :dietary,
+        params[:dietary],
+        # class: "form-control",
+        placeholder: "Filter by cuisine type"
+      %>
+       <%= submit_tag "Search", :name => nil %>
+    <% end %>
+
+    <!-- <div class="search-dietary">
+      <%= form_tag meals_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        # class: "form-control",
+        placeholder: "Filer by dietary requirements"
+      %>
+    <% end %>
+    </div> -->
+
+  </div>
+</div>
+
 <h1>Homemade meals around you</h1>
 <p>Find me in app/views/meals/index.html.erb</p>
 
@@ -14,6 +43,10 @@
         <div class="meal-card" style= "background-image:linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(69,68,68,0.8) 100%), url('<%= meal.photo %>')">
           <div class="meal-card-content">
            <%= link_to meal.name, meal_path(meal) %>
+           <%= meal.cuisine %>
+           <% meal.dietaries.each do |dietary| %>
+            <%= dietary.name %>
+           <% end %>
           </div>
 
         </div>

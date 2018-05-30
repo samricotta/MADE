@@ -7,7 +7,9 @@
     <%= f.input :portions_left %>
     <%# f.input :photo %>
     <%= f.input :cuisine %>
-    <%= f.input :dietary %>
+    <%= f.simple_fields_for :meal_dietaries do |dietaries_form|%>
+      <%= dietaries_form.input :dietaries, collection: @dietaries, input_html: { multiple: true } %>
+    <% end %>
   </div>
 
   <div class="text-center">

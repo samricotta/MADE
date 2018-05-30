@@ -10,10 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_29_114215) do
+ActiveRecord::Schema.define(version: 2018_05_30_173342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dietaries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "meal_dietaries", force: :cascade do |t|
+    t.bigint "meal_id"
+    t.bigint "dietary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dietary_id"], name: "index_meal_dietaries_on_dietary_id"
+    t.index ["meal_id"], name: "index_meal_dietaries_on_meal_id"
+  end
 
   create_table "meal_orders", force: :cascade do |t|
     t.integer "quantity"
@@ -47,7 +62,6 @@ ActiveRecord::Schema.define(version: 2018_05_29_114215) do
     t.integer "portions_left"
     t.string "photo"
     t.string "cuisine"
-    t.string "dietary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_meals_on_user_id"
@@ -85,6 +99,8 @@ ActiveRecord::Schema.define(version: 2018_05_29_114215) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "meal_dietaries", "dietaries"
+  add_foreign_key "meal_dietaries", "meals"
   add_foreign_key "meal_orders", "meals"
   add_foreign_key "meal_orders", "orders"
   add_foreign_key "meal_reviews", "meals"
