@@ -18,12 +18,25 @@ User.destroy_all
     password: "123456",
     address: Faker::Address.full_address
   )
-  5.times do
+  3.times do
     description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit error a quidem at quisquam, autem."
     meal = Meal.create!(
       name: Faker::Food.dish,
       description: description,
       ingredients: "#{(Faker::Food.ingredient)}, " * 5,
+      dietary: "Gluten Free",
+      cuisine: "French",
+      user: user
+    )
+  end
+    3.times do
+    description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit error a quidem at quisquam, autem."
+    meal = Meal.create!(
+      name: Faker::Food.dish,
+      description: description,
+      ingredients: "#{(Faker::Food.ingredient)}, " * 5,
+      dietary: "Dairy Free",
+      cuisine: "Italian",
       user: user
     )
   end
