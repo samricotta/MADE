@@ -6,8 +6,9 @@ class MealOrdersController < ApplicationController
     @meal = Meal.find(params[:meal_id])
     @meal_order.meal = @meal
 
-    @order = Order.where(user: current_user, status: "pending").first
-    if @order.nil?
+    @order = Order.where(user: current_user, status: "pending").last
+    # raise
+    if @order.present?
       @meal_order.order = @order
     else
     # if not Order.new
@@ -16,14 +17,14 @@ class MealOrdersController < ApplicationController
       @order.user = current_user
       @order.save
       @meal_order.order = @order
-      @meal_order.save
     end
+    @meal_order.save
 
     # update the total amount of order depending on what was added
-    @order.amount = @order.amount + @meal.price
+    @order.amount = @order.amount + (@meal.price * @meal_order.quantity)
     @order.save
-
     # raise
+
     if @meal_order.save
       redirect_to order_path(@order)
     else

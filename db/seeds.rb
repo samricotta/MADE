@@ -6,7 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+MealOrder.destroy_all
+MealReview.destroy_all
+Order.destroy_all
 User.destroy_all
+Meal.destroy_all
 
 # create users
 # assign 5 meals per user
@@ -16,8 +20,7 @@ User.destroy_all
     last_name: Faker::Name.last_name,
     email: Faker::Internet.free_email,
     password: "123456",
-    address: Faker::Address.full_address,
-    price: 10
+    address: Faker::Address.full_address
   )
   5.times do
     description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit error a quidem at quisquam, autem."
@@ -25,7 +28,8 @@ User.destroy_all
       name: Faker::Food.dish,
       description: description,
       ingredients: "#{(Faker::Food.ingredient)}, " * 5,
-      user: user
+      user: user,
+      price: 10
     )
   end
 end
