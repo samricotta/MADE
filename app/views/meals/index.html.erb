@@ -36,9 +36,9 @@
     <div class="col-xs-12 col-sm-6">
       <% @meals.each do |meal|  %>
         <% if meal.photo? %>
-          <%  %>
+          <% photo = cl_image_path meal.photo %>
         <% else %>
-          <%  %>
+           <% photo = "https://homemadeandyummy.com/wp-content/uploads/2017/04/Homemade-Yummy-Logo.jpg" %>
         <% end  %>
         <div class="meal-card" style= "background-image:linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(69,68,68,0.8) 100%), url('<%= meal.photo %>')">
           <div class="meal-card-content">
@@ -60,3 +60,6 @@
   data-markers="<%= @markers.to_json %>"
   ></div>
 </div>
+
+
+
