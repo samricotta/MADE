@@ -11,6 +11,19 @@ class MealsController < ApplicationController
       @meals = User.where.not(latitude: nil, longitude: nil).map { |user| user.meals }.flatten
     end
 
+    if !params[:cuisine].blank? && !params[:dietary].blank?
+      sql_query = "cuisine ILIKE :cuisine AND dietary ILIKE :dietary" # how does this change?
+      @meals = Meal.where(sql_query, {cuisine: "%#{params[:cuisine]}%", dietary: "%#{params[:dietary]}%"}) # we will give a menu with exact keywords
+    elsif !params[:cuisine].blank? && params[:dietary].blank?
+      sql_query = "cuisine ILIKE :cuisine"
+      @meals = Meal.where(sql_query, {cuisine: "%#{params[:cuisine]}%"})
+    elsif params[:cuisine].blank? && !params[:dietary].blank?
+      sql_query = "dietary ILIKE :dietary"
+      @meals = Meal.where(sql_query, {dietary: "%#{params[:dietary]}%"})
+    else
+      @meals = Meal.all
+    end
+
     @markers = @meals.map do |meal|
       {
         lat: meal.user.latitude,
@@ -18,6 +31,8 @@ class MealsController < ApplicationController
         # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
       }
     end
+
+
   end
 
   def show
@@ -33,16 +48,24 @@ class MealsController < ApplicationController
     meal_params
     @meal.update(meal_params)
     redirect_to meal_path(@meal)
+    # should implement a destroy action when we want to remove a dietary
   end
 
   def new
     @meal = Meal.new
+    @dietaries = Dietary.all
   end
 
   def create
     @meal = Meal.new(meal_params)
+    dietary_ids = params[:meal][:meal_dietaries][:dietaries]
+    dietary_ids.delete('')
     @meal.user = current_user
     if @meal.save
+      dietary_ids.each do |dietary_id|
+        dietary = Dietary.find(dietary_id)
+        MealDietary.create!(meal: @meal, dietary: dietary)
+      end
       redirect_to meal_path(@meal)
     else
       # raise

@@ -7,7 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 User.destroy_all
-
+MealDietary.destroy_all
+Dietary.destroy_all
+# creating dietaries list
+dietaries = [ "Halal", "Kosher", "Vegetarian", "Vegan", "Pescatarian", "Diary Free", "Nut Free", "Gluten Free", "Egg Free" ]
+dietaries.each do |dietary|
+  d = Dietary.create(name: dietary)
+  puts "Created #{d.name}"
+end
 # create users
 # assign 5 meals per user
 20.times do
@@ -18,13 +25,32 @@ User.destroy_all
     password: "123456",
     address: Faker::Address.full_address
   )
-  5.times do
+  3.times do
     description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit error a quidem at quisquam, autem."
     meal = Meal.create!(
       name: Faker::Food.dish,
       description: description,
       ingredients: "#{(Faker::Food.ingredient)}, " * 5,
+      cuisine: "French",
       user: user
     )
+    dietary_names = dietaries.sample(2)
+    Dietary.where(name: dietary_names).each do |dietary|
+      MealDietary.create!(meal: meal, dietary: dietary)
+    end
+  end
+    3.times do
+    description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit error a quidem at quisquam, autem."
+    meal = Meal.create!(
+      name: Faker::Food.dish,
+      description: description,
+      ingredients: "#{(Faker::Food.ingredient)}, " * 5,
+      cuisine: "Italian",
+      user: user
+    )
+    dietary_names = dietaries.sample(2)
+    Dietary.where(name: dietary_names).each do |dietary|
+      MealDietary.create!(meal: meal, dietary: dietary)
+    end
   end
 end
