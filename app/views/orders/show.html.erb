@@ -1,8 +1,8 @@
 
+
 <% if @order.status == 'paid' %>
    <%= render 'confirmation' %>
-<!--   <h1>Your order</h1>
-  <p>Find me in app/views/orders/show.html.erb</p> -->
-  <% else %>
+<% else %>
   <%= render 'basket' %>
-  <% end %>
+<% end %>
+

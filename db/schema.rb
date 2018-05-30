@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2018_05_30_173342) do
+ActiveRecord::Schema.define(version: 2018_05_30_150910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +64,7 @@ ActiveRecord::Schema.define(version: 2018_05_30_173342) do
     t.string "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_meals_on_user_id"
   end
 
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(version: 2018_05_30_173342) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "amount_cents", default: 0, null: false
+    t.jsonb "payment"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

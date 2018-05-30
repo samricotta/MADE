@@ -1,6 +1,17 @@
 
+
+<%#= form_tag orders_path do %>
+  <%#= hidden_field_tag 'meal_id', @meal.id %>
+  <%#= submit_tag 'Purchase', class: 'btn btn-primary' %>
+<%# end %>
+
 <div class="basket-container">
   <h1> Basket </h1>
+  <ul>
+    <li>Status: <%= @order.status %></li>
+    <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
+  <ul>
+
   <div class="content">
     <% @order.meal_orders.each do |meal_order| %>
       <div class="row">
@@ -15,11 +26,26 @@
     <% end %>
 
 
-<%= link_to "add more recipes", meals_path %>
+    <%= link_to "add more recipes", meals_path %>
    </div>
    <!-- <div class="amount">
      @order
    </div> -->
+<!-- app/views/payments/new.html.erb -->
+<%= form_tag order_payments_path(@order) do %>
+  <article>
+    <label class="amount">
+      <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-name="My meal"
+    data-email="<%= current_user.email %>""
+    data-amount="<%= @order.amount_cents %>"
+    data-currency="<%= @order.amount.currency %>"></script>
+<% end %>
 
 
  </div>

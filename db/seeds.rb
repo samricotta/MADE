@@ -6,15 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+MealOrder.destroy_all
+MealReview.destroy_all
+Order.destroy_all
 User.destroy_all
+Meal.destroy_all
 MealDietary.destroy_all
 Dietary.destroy_all
+
 # creating dietaries list
 dietaries = [ "Halal", "Kosher", "Vegetarian", "Vegan", "Pescatarian", "Diary Free", "Nut Free", "Gluten Free", "Egg Free" ]
 dietaries.each do |dietary|
   d = Dietary.create(name: dietary)
   puts "Created #{d.name}"
 end
+
+
 # create users
 # assign 5 meals per user
 20.times do
@@ -32,7 +39,8 @@ end
       description: description,
       ingredients: "#{(Faker::Food.ingredient)}, " * 5,
       cuisine: "French",
-      user: user
+      user: user,
+      price: 5
     )
     dietary_names = dietaries.sample(2)
     Dietary.where(name: dietary_names).each do |dietary|
@@ -45,8 +53,10 @@ end
       name: Faker::Food.dish,
       description: description,
       ingredients: "#{(Faker::Food.ingredient)}, " * 5,
-      cuisine: "Italian",
-      user: user
+      user: user,
+      price: 10,
+      cuisine: "Italian"
+
     )
     dietary_names = dietaries.sample(2)
     Dietary.where(name: dietary_names).each do |dietary|
