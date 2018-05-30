@@ -1,0 +1,20 @@
+ <div class="basket-container">
+   <h1> Your order </h1>
+   <div class="content">
+
+      <% @order.meals.each do |meal| %>
+        <%= meal.name %>
+        <% if meal.dietary.present? %>
+          <%= meal.dietary%>
+        <% end %>
+       <!--  meal.meal_order.quantity -->
+        <% meal.meal_orders do |meal_order| %>
+          <%= meal_order.quantity %>
+        <% end %>
+      <% end %>
+
+   </div>
+   <!-- <div class="amount">
+     @order
+   </div> -->
+ </div>
