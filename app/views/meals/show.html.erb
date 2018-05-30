@@ -19,6 +19,10 @@
   <%= f.input :portion_size %>
   <%= f.button :submit, class: "btn btn-all" %>
 <% end %>
+<% if @order.length == 1 %>
+  <%= link_to "cart", order_path(@order[0]) %>
+<% end %>
+
 
 <h1>Reviews</h1>
 
@@ -32,3 +36,5 @@
 <% end %>
 
 <p><%= link_to "Edit your password", edit_user_registration_path %></p>
+
+

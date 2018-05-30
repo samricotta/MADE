@@ -16,7 +16,8 @@ User.destroy_all
     last_name: Faker::Name.last_name,
     email: Faker::Internet.free_email,
     password: "123456",
-    address: Faker::Address.full_address
+    address: Faker::Address.full_address,
+    price: 10
   )
   5.times do
     description = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit error a quidem at quisquam, autem."

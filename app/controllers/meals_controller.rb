@@ -21,6 +21,7 @@ class MealsController < ApplicationController
   end
 
   def show
+    @order = Order.where(user: current_user, status: "pending")
     @meal_review = MealReview.new
     @meal = Meal.find(params[:id])
     @meal_order = MealOrder.new

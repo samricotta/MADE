@@ -21,10 +21,10 @@
        <%# if order.status == "paid"%>
         <h3>Order <%= order.id%></h3>
         <% order.meals.each do |meal|%>
-           <p><%= meal.name %></p>
-           <p><%= meal.description %></p>
-
-          <% end %>
+          <p><%= meal.name %></p>
+          <p><%= meal.description %></p>
+          <%= link_to "show", order_path(order)  %>
+        <% end %>
         <%# end %>
       <% end %>
       </div>

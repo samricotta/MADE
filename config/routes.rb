@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     resources :meal_orders, only: :create
   end
 
-  resources :order, only: :show
-  
+  resources :orders, only: [:show, :create] do
+  resources :payments, only: [:new, :create]
+end
+
   get '/dashboard', to: 'pages#dashboard'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/dashboard', to: 'pages#dashboard'
