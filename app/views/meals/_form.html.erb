@@ -5,7 +5,8 @@
     <%= f.input :ingredients %>
     <%# f.input :price %>
     <%= f.input :portions_left %>
-    <%# f.input :photo %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <%= f.input :cuisine %>
     <%= f.input :dietary %>
   </div>
@@ -14,3 +15,5 @@
     <%= f.button :submit, class: "btn btn-all" %>
   </div>
 <% end %>
+
+
