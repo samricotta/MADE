@@ -6,7 +6,29 @@
 
 <p><%= link_to "index", meals_path%></p>
 <p><%= link_to "home", root_path%></p>
+<%= render "order_form"%>
 
+<!-- if statement must be implemented so that you can only review once ordered -->
+
+<h3>Write your review for <%=@meal.name%> </h3>
+<%= simple_form_for [@meal, @meal_review], method: :post do |f| %>
+  <%= f.input :rating %>
+  <%= f.input :comment %>
+  <%= f.input :speed %>
+  <%= f.input :quality %>
+  <%= f.input :portion_size %>
+  <%= f.button :submit, class: "btn btn-all" %>
+<% end %>
+
+<h1>Reviews</h1>
+
+<% @meal.meal_reviews.each do |review| %>
+   <h2>Review <%= review.id %> </h2>
+  <p>Rating : <%= review.rating %></p>
+  <p>Comment : <%= review.comment %></p>
+  <p>Speed : <%= review.speed %></p>
+  <p>Quality : <%= review.quality %></p>
+  <p>Portion Size : <%= review.portion_size %></p>
+<% end %>
 
 <p><%= link_to "Edit your password", edit_user_registration_path %></p>
-

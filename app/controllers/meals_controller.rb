@@ -4,7 +4,6 @@ class MealsController < ApplicationController
 
   before_action :set_meal, only: [:edit, :update, :show]
 
-
   def index
     if params[:location]
       @meals = User.where("address iLIKE ?", "%#{params[:location]}%").where.not(latitude: nil, longitude: nil).map { |user| user.meals }.flatten
@@ -22,6 +21,9 @@ class MealsController < ApplicationController
   end
 
   def show
+    @meal_review = MealReview.new
+    @meal = Meal.find(params[:id])
+    @meal_order = MealOrder.new
   end
 
   def edit
