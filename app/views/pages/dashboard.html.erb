@@ -1,13 +1,42 @@
-<ul>
 
-  <% current_user.meals.each do |meal| %>
-    <li>
-      <p><%= meal.name %></p>
-      <p><%= meal.description %></p>
-      <p><%= meal.portions_left %></p>
+<h1><%= current_user.first_name %> <%=current_user.last_name%></h1>
+<%# if current_user.photo? %>
+<%#= current_user.photo %>
+ <%# end %>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#mealsihaveordered" aria-controls="mealsihaveordered" role="tab" data-toggle="tab">Meals I have ordered</a></li>
+    <li role="presentation"><a href="#cookedbyme" aria-controls="cookedbyme" role="tab" data-toggle="tab">Cooked by me</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+  </ul>
 
-      <%= link_to "Delete this meal", meal_path(meal) , method: :delete, data: { confirm: "Are you sure you want to delete this meal?"} %>
-    </li>
-  <% end %>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">...</div>
+    <div role="tabpanel" class="tab-pane" id="mealsihaveordered">
+      <ul>
+        <% current_user.meals.each do |meal| %>
+          <li>
+            <p><%= meal.name %></p>
+            <p><%= meal.description %></p>
+            <p><%= meal.portions_left %></p>
 
-</ul>
+            <%= link_to "Delete this meal", meal_path(meal) , method: :delete, data: { confirm: "Are you sure you want to delete this meal?"} %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="cookedbyme">
+     <% current_user.orders.each do |order| %>
+      <li>
+        <p><%= order.meal.name %></p>
+        <p><%= order.meal.description %></p>
+        <p><%= meal.portions_left %></p>
+      </li>
+      <% end %>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="messages">...</div>
+  </div>
+
+</div>
