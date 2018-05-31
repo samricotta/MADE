@@ -40,7 +40,8 @@ end
       ingredients: "#{(Faker::Food.ingredient)}, " * 5,
       cuisine: "French",
       user: user,
-      price: 5
+      price: 5,
+      portions_left: 10
     )
     dietary_names = dietaries.sample(2)
     Dietary.where(name: dietary_names).each do |dietary|
@@ -55,7 +56,8 @@ end
       ingredients: "#{(Faker::Food.ingredient)}, " * 5,
       user: user,
       price: 10,
-      cuisine: "Italian"
+      cuisine: "Italian",
+      portions_left: 10
 
     )
     dietary_names = dietaries.sample(2)
