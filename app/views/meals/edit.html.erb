@@ -7,7 +7,7 @@
     <div class="update-form">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-          <%= render "form", meal: @meal %>
+          <%= render "form", meal: @meal, dietary: @meal.dietaries %>
           <%= link_to "Back", meals_path , class: "btn btn-success" %>
           </div>
         </div>
