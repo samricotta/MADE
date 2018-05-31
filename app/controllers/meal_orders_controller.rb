@@ -25,6 +25,10 @@ class MealOrdersController < ApplicationController
     @order.save
     # raise
 
+    # update the amount left of the meal
+    @meal.portions_left = (@meal.portions_left - @meal_order.quantity)
+    @meal.save
+
     if @meal_order.save
       redirect_to order_path(@order)
     else

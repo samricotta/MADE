@@ -1,4 +1,5 @@
 
+<div class="col-xs-4 col-xs-offset-4">
 <div>
   <% if @meal.photo %>
     <%= cl_image_tag @meal.photo %>
@@ -19,6 +20,7 @@
 <p>Find me in app/views/meals/show.html.erb</p>
 <p><%= @meal.description %></p>
 <p><%= @meal.ingredients %></p>
+<p><%= @meal.portions_left %></p>
 
 <!-- <p><%= @meal.user.email %></p> -->
 
@@ -66,5 +68,5 @@
 <!-- if statement must be implemented so that you can only review once ordered -->
 
 
-
+</div>
 

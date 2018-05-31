@@ -1,4 +1,10 @@
-<%= simple_form_for [@meal, @meal_order] do |f| %>
-  <%= f.input :quantity %>
-  <%= f.submit "add to basket", class: "btn btn-primary" %>
+<% if @meal.portions_left > 0 %>
+
+
+  <%= simple_form_for [@meal, @meal_order] do |f| %>
+    <%= f.input :quantity, collection: 1..@meal.portions_left %>
+    <%= f.submit "add to basket", class: "btn btn-primary" %>
+  <% end %>
+<% else %>
+  <p>No more portions available</p>
 <% end %>
