@@ -3,19 +3,23 @@
     <%= form_tag meals_path, method: :get, class: "form-inline" do %>
       <%= text_field_tag :location,
         params[:location],
-        class: "form-control",
+        class: "nav-input",
         placeholder: "Filer by location"
       %>
 
       <%= text_field_tag :cuisine,
         params[:cuisine],
-        class: "form-control",
+        class: "nav-input",
         placeholder: "Filer by cuisine type"
       %>
 
-      <%= select_tag :dietary, options_from_collection_for_select(@dietaries, :id, :name, params[:dietary]), {:include_blank => 'Select dietary', :class => 'form-control'} %>
+      <%= select_tag :dietary, options_from_collection_for_select(@dietaries, :id, :name, params[:dietary]), {:include_blank => 'Select dietary', :class => 'nav-input'} %>
 
-       <%= submit_tag "Search", :name => nil, class: "btn-all" %>
+      <%= button_tag(type: "submit", class: "btn-all") do %>
+        <i class="fas fa-search"></i>
+      <% end %>
+
+
     <% end %>
 
 
