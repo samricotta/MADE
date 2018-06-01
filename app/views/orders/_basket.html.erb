@@ -17,9 +17,12 @@
       <div class="row">
         <div class="col-xs-6 col-xs-offset-4">
           <%= meal_order.meal.name %>
-          <%# if meal_order.meal.dietary.present? %>
-            <%#= meal_order.meal.dietary%>
-          <%# end %>
+          <% if meal_order.meal.dietaries.present? %>
+            <p><strong>Dietary restrictions: </strong></p>
+            <% meal_order.meal.dietaries.each do |dietary| %>
+              <p><%= dietary.name %></p>
+            <% end %>
+          <% end %>
           <%= meal_order.quantity %>
         </div>
       </div>
