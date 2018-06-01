@@ -6,11 +6,9 @@ class Meal < ApplicationRecord
   has_many :orders, through: :meal_orders
   monetize :price_cents
   has_many :dietaries, through: :meal_dietaries
-
   mount_uploader :photo, PhotoUploader
 
   def self.filter(args)
-
     dietary = args[:dietary]
     cuisine = args[:cuisine]
     location = args[:location]
@@ -53,7 +51,6 @@ class Meal < ApplicationRecord
     else
       return all
     end
-
-
   end
+
 end
