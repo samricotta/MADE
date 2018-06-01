@@ -8,6 +8,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-right: 40px;
 }
 
 .card {
@@ -41,6 +42,8 @@
 .bigger-card {
   height: 350px;
   flex: 0 0 40%;
+   background-size: cover;
+  background-position: center;
 }
 
 .img-chef {

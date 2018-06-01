@@ -16,9 +16,15 @@
   margin-bottom: 10px;
   border-radius: 10px;
   padding-top: 20px;
-
+  color: white;
   position: relative;
 }
+
+.card-index a {
+  color: white;
+  text-decoration: none;
+}
+
 
 .index-map {
   flex: 0 0 30%;
