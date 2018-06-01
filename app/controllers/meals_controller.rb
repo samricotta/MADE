@@ -31,7 +31,6 @@ class MealsController < ApplicationController
   def edit
     # i need the dietaries
     @dietaries = Dietary.all
-
   end
 
   def update
