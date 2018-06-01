@@ -1,0 +1,23 @@
+.card {
+  height: 193px;
+  background-size: cover;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding-top: 20px;
+  // width: 290px;
+}
+
+.card_content a {
+  padding-top: 20px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px;
+}
+
+.heart {
+  position: absolute;
+  bottom: 10px;
+  left: 25px;
+}

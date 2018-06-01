@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row">
+    <% six_meals.each do |meal| %>
+    <div class="col-xs-12 col-sm-4">
+      <% if meal.photo? %>
+        <% photo = cl_image_path meal.photo %>
+      <% else %>
+        <% photo = "https://images.unsplash.com/photo-1511690743698-d9d85f2fbf38?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=052d0d3015f525635deba810a58da4f1&auto=format&fit=crop&w=634&q=80" %>
+      <% end %>
+      <div class= "card" style= "background-image:linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(69,68,68,0.8) 100%), url('<%= photo %>')">
+        <div class= "card_content">
+          <%= link_to meal.name, meal_path(meal) %>
+          <i class="far fa-heart heart"></i>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

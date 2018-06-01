@@ -1,4 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class= "wrapper">
+  <%= render 'shared/banner' %>
+  <div class= "container">
+    <h2>Top chefs of the week</h2>
+    <%= render 'top_chefs_home', top_chef: @top_chef, four_meals: @four_meals  %>
+    <h2>What's cooking today?</h2>
+    <%= render 'six_recipes_home', six_meals: @six_meals  %>
+  </div>
+</div>
 
-<p>Sam</p>
