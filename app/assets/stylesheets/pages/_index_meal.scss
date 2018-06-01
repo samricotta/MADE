@@ -1,0 +1,29 @@
+.index-container {
+  display: flex;
+}
+
+.index-cards {
+  flex: 1 1 auto;
+  padding-left: 15px;
+}
+
+
+.card-index {
+  height: 193px;
+  background-size: cover;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  padding-top: 20px;
+
+  position: relative;
+}
+
+.index-map {
+  flex: 0 0 30%;
+  height: 100vh;
+  position: sticky !important;
+  top: 0px !important;
+  margin-left: 10px;
+}

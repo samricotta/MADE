@@ -1,11 +1,25 @@
+.home-section {
+  display: flex;
+  align-items: center;
+}
+
+.cards {
+  flex: 1 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .card {
   height: 193px;
   background-size: cover;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   border-radius: 10px;
   padding-top: 20px;
-  // width: 290px;
+  flex: 0 0 45%;
+  position: relative;
 }
 
 .card_content a {
@@ -20,4 +34,15 @@
   position: absolute;
   bottom: 10px;
   left: 25px;
+  color: white;
+  font-size: 20px;
+}
+
+.bigger-card {
+  height: 350px;
+  flex: 0 0 40%;
+}
+
+.img-chef {
+ position: center;
 }

@@ -1,5 +1,9 @@
-<div class="filters">
-  <div class="search-cuisine">
+
+
+<div class="index-container">
+  <div class="index-cards">
+    <h1>Homemade meals around you</h1>
+
     <%= form_tag meals_path, method: :get, class: "form-inline" do %>
       <%= text_field_tag :location,
         params[:location],
@@ -17,26 +21,17 @@
 
        <%= submit_tag "Search", :name => nil, class: "btn-all" %>
     <% end %>
+    <div class="row">
+      <% @meals.each do |meal|%>
+        <div class="col-xs-12 col-sm-4">
 
-
-
-  </div>
-</div>
-
-<h1>Homemade meals around you</h1>
-<p>Find me in app/views/meals/index.html.erb</p>
-
-
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <% @meals.each do |meal|  %>
         <% if meal.photo? %>
           <% photo = cl_image_path meal.photo %>
         <% else %>
-           <% photo = "https://homemadeandyummy.com/wp-content/uploads/2017/04/Homemade-Yummy-Logo.jpg" %>
+           <% photo = "https://images.unsplash.com/photo-1513442542250-854d436a73f2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5167e6cd95a3a6107cb3964fc7fb5d12&auto=format&fit=crop&w=858&q=80" %>
         <% end  %>
-        <div class="meal-card" style= "background-image:linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(69,68,68,0.8) 100%), url('<%= meal.photo %>')">
+
+        <div class="card-index" style= "background-image: linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(69,68,68,0.8) 100%), url('<%= photo %>')">
           <div class="meal-card-content">
            <%= link_to meal.name, meal_path(meal) %>
            <%= meal.cuisine %>
@@ -44,18 +39,23 @@
             <%= dietary.name %>
            <% end %>
           </div>
-
         </div>
+      </div>
       <% end %>
     </div>
   </div>
   <div
+  class="index-map"
   id="map"
   style="width: 100%;
   height: 600px;"
   data-markers="<%= @markers.to_json %>"
   ></div>
 </div>
+
+
+
+
 
 
 
