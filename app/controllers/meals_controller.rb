@@ -2,36 +2,22 @@ class MealsController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index, :show]
 
-  before_action :set_meal, only: [:edit, :update, :show]
+  before_action :set_meal, only: [:edit, :update, :show, :destroy]
 
   def index
-    if params[:location]
-      @meals = User.where("address iLIKE ?", "%#{params[:location]}%").where.not(latitude: nil, longitude: nil).map { |user| user.meals }.flatten
-    else
-      @meals = User.where.not(latitude: nil, longitude: nil).map { |user| user.meals }.flatten
-    end
-
-    if !params[:cuisine].blank? && !params[:dietary].blank?
-      sql_query = "cuisine ILIKE :cuisine AND dietary ILIKE :dietary" # how does this change?
-      @meals = Meal.where(sql_query, {cuisine: "%#{params[:cuisine]}%", dietary: "%#{params[:dietary]}%"}) # we will give a menu with exact keywords
-    elsif !params[:cuisine].blank? && params[:dietary].blank?
-      sql_query = "cuisine ILIKE :cuisine"
-      @meals = Meal.where(sql_query, {cuisine: "%#{params[:cuisine]}%"})
-    elsif params[:cuisine].blank? && !params[:dietary].blank?
-      sql_query = "dietary ILIKE :dietary"
-      @meals = Meal.where(sql_query, {dietary: "%#{params[:dietary]}%"})
-    else
-      @meals = Meal.all
-    end
+    @dietaries = Dietary.all
+    # filter method is in the Meal model file
+    @meals = Meal.filter(params) # is params as the keyword?
 
     @markers = @meals.map do |meal|
-      {
-        lat: meal.user.latitude,
-        lng: meal.user.longitude#,
-        # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
-      }
+      if meal.user.latitude.present? && meal.user.longitude.present?
+        {
+          lat: meal.user.latitude,
+          lng: meal.user.longitude#,
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+        }
+      end
     end
-
 
   end
 
@@ -43,13 +29,24 @@ class MealsController < ApplicationController
   end
 
   def edit
+    # i need the dietaries
+    @dietaries = Dietary.all
   end
 
   def update
-    meal_params
+    old_dietary_ids = @meal.dietaries.map(&:id) # short cut for iteration (.id is a method)
+    dietary_ids = params[:meal][:meal_dietaries][:dietaries].map(&:to_i)
+    dietary_ids.delete(0)
+    (old_dietary_ids - dietary_ids).each do |id|
+      dietary = Dietary.find(id)
+      MealDietary.where(meal: @meal, dietary: dietary).first.destroy
+    end
+    dietary_ids.each do |dietary_id|
+      dietary = Dietary.find(dietary_id)
+      MealDietary.create!(meal: @meal, dietary: dietary) unless @meal.dietaries.include?(dietary)
+    end
     @meal.update(meal_params)
     redirect_to meal_path(@meal)
-    # should implement a destroy action when we want to remove a dietary
   end
 
   def new
@@ -75,7 +72,6 @@ class MealsController < ApplicationController
   end
 
   def destroy
-    @meal = Meal.find(params[:id])
     @meal.destroy
     redirect_to dashboard_path
   end

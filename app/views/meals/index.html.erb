@@ -1,28 +1,24 @@
 <div class="filters">
   <div class="search-cuisine">
-    <%= form_tag meals_path, method: :get do %>
+    <%= form_tag meals_path, method: :get, class: "form-inline" do %>
+      <%= text_field_tag :location,
+        params[:location],
+        class: "form-control",
+        placeholder: "Filer by location"
+      %>
+
       <%= text_field_tag :cuisine,
         params[:cuisine],
-        # class: "form-control",
+        class: "form-control",
         placeholder: "Filer by cuisine type"
       %>
-      <%= text_field_tag :dietary,
-        params[:dietary],
-        # class: "form-control",
-        placeholder: "Filter by cuisine type"
-      %>
-       <%= submit_tag "Search", :name => nil %>
+
+      <%= select_tag :dietary, options_from_collection_for_select(@dietaries, :id, :name, params[:dietary]), {:include_blank => 'Select dietary', :class => 'form-control'} %>
+
+       <%= submit_tag "Search", :name => nil, class: "btn-all" %>
     <% end %>
 
-    <!-- <div class="search-dietary">
-      <%= form_tag meals_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        # class: "form-control",
-        placeholder: "Filer by dietary requirements"
-      %>
-    <% end %>
-    </div> -->
+
 
   </div>
 </div>

@@ -3,18 +3,7 @@
    <i class="fas fa-utensils" id="logo"></i>
   <% end %>
 
-  <div class="search">
-    <%= form_tag meals_path, :method => 'get' do %>
-      <p>
-        <%= text_field_tag :location, params[:location], class: "nav-input" %>
-        <%= button_tag(type: "submit", class: "btn-all") do %>
-          <i class="fas fa-search"></i>
-        <% end %>
 
-
-      </p>
-    <% end %>
-  </div>
   <div class="navbar-right hidden-xs hidden-sm">
     <% if user_signed_in? %>
       <%= link_to "Add a meal", new_meal_path, class: "navbar-item navbar-link" %>

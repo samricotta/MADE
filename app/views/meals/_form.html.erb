@@ -9,7 +9,7 @@
     <%= f.input :photo_cache, as: :hidden %>
     <%= f.input :cuisine %>
     <%= f.simple_fields_for :meal_dietaries do |dietaries_form|%>
-      <%= dietaries_form.input :dietaries, collection: @dietaries, input_html: { multiple: true } %>
+      <%= dietaries_form.collection_check_boxes :dietaries, @dietaries, :to_param, :name, { checked: meal.dietaries.map(&:to_param) } %>
     <% end %>
   </div>
 
@@ -19,3 +19,5 @@
 <% end %>
 
 
+<!-- collection: Tag.all, as: :check_boxes -->
+<!-- input_html: { multiple: true } -->
