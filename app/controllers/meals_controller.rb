@@ -5,14 +5,7 @@ class MealsController < ApplicationController
   before_action :set_meal, only: [:edit, :update, :show, :destroy]
 
   def index
-    # if params[:location]
-    #   @meals = User.where("address iLIKE ?", "%#{params[:location]}%").where.not(latitude: nil, longitude: nil).map { |user| user.meals }.flatten
-    # else
-    #   @meals = User.where.not(latitude: nil, longitude: nil).map { |user| user.meals }.flatten
-    # end
-
     @dietaries = Dietary.all
-
     # filter method is in the Meal model file
     @meals = Meal.filter(params) # is params as the keyword?
 

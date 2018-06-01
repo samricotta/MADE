@@ -1,4 +1,9 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-
+<%= form_tag meals_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :location, params[:location], class: "nav-inpu" %>
+    <%= submit_tag "Search", :name => nil, class: "btn-all" %>
+  </p>
+<% end %>
 <p></p>
