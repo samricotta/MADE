@@ -1,7 +1,7 @@
 
 
 <% if top_chef.photo? %>
-  <% photo = cl_image_path meal.photo %>
+  <% photo = cl_image_path top_chef.photo %>
 <% else %>
   <% photo = "https://images.unsplash.com/photo-1482932973216-15c6808e8691?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=601b630df8bea4fbc1628b410c32376f&auto=format&fit=crop&w=967&q=80" %>
 <% end %>
