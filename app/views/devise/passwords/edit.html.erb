@@ -1,3 +1,4 @@
+<div class="col-xs-4 col-xs-offset-4">
 <h2>Change your password</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
@@ -11,9 +12,14 @@
     <%= f.input :password_confirmation, label: "Confirm your new password", required: true %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Change my password" %>
+  <div class="form-actions text-center">
+    <%= f.button :submit, "Change my password", class: "btn-all"%>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>
+
+
+
