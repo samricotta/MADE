@@ -1,4 +1,4 @@
-<% if @meal.portions_left > 0 %>
+<% if @meal.portions_left != nil %>
 
 
   <%= simple_form_for [@meal, @meal_order] do |f| %>
