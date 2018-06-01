@@ -3,75 +3,70 @@
 <% meal_photo =  @meal.photo? ? @meal.photo : "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=74ac7c1aa35dc36f50cc1ac7517c70a7&auto=format&fit=crop&w=500&q=60" %>
   <div class="banner-show content-bottom" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path meal_photo, quality: "auto" %>');">
   </div>
-
-<div class="col-xs-4 col-xs-offset-4">
-<div>
-  <% if @meal.photo %>
-    <%= cl_image_tag @meal.photo %>
-  <% else %>
-    <%= image_tag("https://images.unsplash.com/photo-1512200937580-db88be2072a4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=5723ce354fe89b0e9c10e43e4863a379&auto=format&fit=crop&w=1955&q=80") %>
-  <% end %>
-</div>
-
-<div class="header">
-  <% if @meal.user.photo? %>
-  <p><%= cl_image_tag @meal.user.photo, class: "avatar" %></p>
-  <p><%= @meal.user.name %></p>
-  <% end %>
-</div>
+<div class="container">
 
 
-<h1><%= @meal.name%></h1>
-<p>Find me in app/views/meals/show.html.erb</p>
-<p><%= @meal.description %></p>
-<p><%= @meal.ingredients %></p>
-<p><%= @meal.portions_left %></p>
-
-<!-- <p><%= @meal.user.email %></p> -->
-
-<p><%= link_to "index", meals_path%></p>
-<p><%= link_to "home", root_path%></p>
-
-<% if user_signed_in? %>
-  <%= render "order_form"%>
+      <div class="header">
+        <%# if @meal.user.photo? %>
+        <p><%#= cl_image_tag @meal.user.photo, class: "avatar" %></p>
+        <p><%#= @meal.user.first_name %></p>
+        <%# end %>
+      </div>
 
 
-  <% if current_user.meal_orders.any? %>
-    <%= link_to 'View basket', order_path(current_user.orders.last), :class=> "btn btn-primary" %>
-  <% end %>
+      <h1><%= @meal.name%></h1>
+      <p>Find me in app/views/meals/show.html.erb</p>
+      <p><%= @meal.description %></p>
+      <p><%= @meal.ingredients %></p>
+      <p><%= @meal.portions_left %></p>
 
-  <h3>Write your review for <%=@meal.name%> </h3>
-  <%= simple_form_for [@meal, @meal_review], method: :post do |f| %>
-    <%= f.input :rating %>
-    <%= f.input :comment %>
-    <%= f.input :speed %>
-    <%= f.input :quality %>
-    <%= f.input :portion_size %>
-    <%= f.button :submit, class: "btn btn-all" %>
-  <% end %>
-  <% if @order.length == 1 %>
-    <%= link_to "cart", order_path(@order[0]) %>
-  <% end %>
+      <!-- <p><%= @meal.user.email %></p> -->
+
+      <p><%= link_to "index", meals_path%></p>
+      <p><%= link_to "home", root_path%></p>
+
+      <% if user_signed_in? %>
+        <%= render "order_form"%>
 
 
-  <h1>Reviews</h1>
+        <% if current_user.meal_orders.any? %>
+          <%= link_to 'View basket', order_path(current_user.orders.last), :class=> "btn btn-primary" %>
+        <% end %>
 
-  <% @meal.meal_reviews.each do |review| %>
-     <h2>Review <%= review.id %> </h2>
-    <p>Rating : <%= review.rating %></p>
-    <p>Comment : <%= review.comment %></p>
-    <p>Speed : <%= review.speed %></p>
-    <p>Quality : <%= review.quality %></p>
-    <p>Portion Size : <%= review.portion_size %></p>
-  <% end %>
+        <h3>Write your review for <%=@meal.name%> </h3>
+        <%= simple_form_for [@meal, @meal_review], method: :post do |f| %>
+          <%= f.input :rating %>
+          <%= f.input :comment %>
+          <%= f.input :speed %>
+          <%= f.input :quality %>
+          <%= f.input :portion_size %>
+          <%= f.button :submit, class: "btn btn-all" %>
+        <% end %>
+        <% if @order.length == 1 %>
+          <%= link_to "cart", order_path(@order[0]) %>
+        <% end %>
 
-  <!-- <p><%#= link_to "Edit your password", edit_user_registration_path %></p> -->
 
-<% else %>
-  <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-success" %>
-<% end %>
-<!-- if statement must be implemented so that you can only review once ordered -->
+        <h1>Reviews</h1>
+
+        <% @meal.meal_reviews.each do |review| %>
+           <h2>Review <%= review.id %> </h2>
+          <p>Rating : <%= review.rating %></p>
+          <p>Comment : <%= review.comment %></p>
+          <p>Speed : <%= review.speed %></p>
+          <p>Quality : <%= review.quality %></p>
+          <p>Portion Size : <%= review.portion_size %></p>
+        <% end %>
+
+        <!-- <p><%#= link_to "Edit your password", edit_user_registration_path %></p> -->
+
+      <% else %>
+        <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "btn btn-success" %>
+      <% end %>
+    <!-- if statement must be implemented so that you can only review once ordered -->
+
 
 
 </div>
+
 
