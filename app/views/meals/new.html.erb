@@ -1,18 +1,28 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
   <div class="content">
+    <div class="form-style">
+      <div class="description text-center">
+      </div>
 
-    <div class="description text-center">
-      <h1>Add a meal</h1>
-      <p>Sell your homemade food in one click</p>
+
     </div>
 
-    <div class="form">
-      <div class="row">
-        <div class="col-xs-6 col-xs-offset-3">
-          <%= render "form", meal: @meal %>
+  </div>
+</div> -->
+
+<div class="form">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <div class="form-style">
+
+        <div class="description text-center">
+          <h1>Add a meal</h1>
+          <p>Sell your homemade food in one click</p>
         </div>
+
+        <%= render "form", meal: @meal %>
+
       </div>
     </div>
-
   </div>
 </div>

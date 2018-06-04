@@ -1,4 +1,4 @@
-<div class="wrapper">
+<!-- <div class="wrapper">
   <div class="content">
     <div class="description">
       <h1>Meal-status</h1>
@@ -7,16 +7,30 @@
     <div class="update-form">
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-          <%= render "form", meal: @meal, dietary: @meal.dietaries %>
-          <%= link_to "Back", meals_path , class: "btn btn-success" %>
+          <%#= render "form", meal: @meal, dietary: @meal.dietaries %>
+          <%#= link_to "Back", meals_path , class: "btn btn-success" %>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div> -->
+
+
+<div class="form">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <div class="form-style">
+        <div class="description text-center">
+          <h1>Update your meal details</h1>
+        </div>
+
+        <%= render "form", meal: @meal, dietary: @meal.dietaries %>
+        <p>or</p>
+        <%= link_to "Go back", meals_path , class: "btn btn-all" %>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-
 
 
