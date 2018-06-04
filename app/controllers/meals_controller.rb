@@ -26,6 +26,10 @@ class MealsController < ApplicationController
     @meal_review = MealReview.new
     @meal = Meal.find(params[:id])
     @meal_order = MealOrder.new
+    @markers = [{ lat: @meal.user.latitude, lng: @meal.user.longitude }]
+#,
+          # infoWindow: { content: render_to_string(partial: "/flats/map_box", locals: { flat: flat }) }
+
   end
 
   def edit
