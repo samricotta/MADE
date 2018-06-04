@@ -1,13 +1,15 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(69,68,68,0.8) 100%), url(<%= image_path "banner2.jpg" %>);">
-   <h1>MADE</h1>
-   <div class="search">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(69,68,68,0.8) 100%), url(<%= image_path "banner2.png" %>);">
+  <h1>MADE</h1>
+  <div class="search">
+    <p><span id="banner-typed-text"></span></p>
     <%= form_tag meals_path, :method => 'get' do %>
-      <p>
-        <%= text_field_tag :location, params[:location], class: "nav-input" %>
-        <%= button_tag(type: "submit", class: "btn-all") do %>
-          <i class="fas fa-search"></i>
-        <% end %>
-      </p>
+      <%= text_field_tag :location, params[:location], placeholder: "Search by location", class: "search-input text-center nav-input" %>
+      <%= button_tag(type: "submit", class: "btn-all") do %>
+        <i class="fas fa-search"></i>
       <% end %>
-    </div>
+    <% end %>
+  </div>
 </div>
+
+
+

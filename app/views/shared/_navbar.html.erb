@@ -9,9 +9,17 @@
       <%= link_to "Add a meal", new_meal_path, class: "navbar-item navbar-link" %>
          <%= link_to "Dashboard", dashboard_path(meals: true), class: "navbar-item navbar-link" %>
            <%= link_to "Log Out",  destroy_user_session_path, method: :delete, class: "navbar-item navbar-link" %>
+             <% if current_user.meal_orders.any? %>
+          <%= link_to 'View basket', order_path(current_user.orders.last), :class=> " navbar-item btn btn-primary" %>
+        <% end %>
       <% else %>
         <%= link_to "Become a chef", new_meal_path, class: "navbar-item navbar-link" %>
         <%= link_to "Sign In",  new_user_session_path, class: "navbar-item navbar-link" %>
+
+
+
+
+
       <% end %>
 
     <div class="navbar-wagon-item">
