@@ -1,0 +1,7 @@
+meta_product_name: "MADE"
+meta_title: "MADE - Connecting hungry people with those who have made delicious food at home"
+meta_description: "Pick up a delicious, home-made meal cooked by your neighbours with MADE, the app that connects busy, hungry people with amateur chefs. Order now."
+meta_image: "banner_meta.png"                       # should exist in `app/assets/images/`
+twitter_account: "@MADE05101045"   # required for Twitter Cards
+
+
