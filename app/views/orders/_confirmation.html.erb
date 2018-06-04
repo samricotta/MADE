@@ -4,9 +4,9 @@
 
       <% @order.meals.each do |meal| %>
         <%= meal.name %>
-        <% if meal.dietary.present? %>
-          <%= meal.dietary%>
-        <% end %>
+        <%# if meal.dietary.present? %>
+          <%#= meal.dietary%>
+        <%# end %>
        <!--  meal.meal_order.quantity -->
         <% meal.meal_orders do |meal_order| %>
           <%= meal_order.quantity %>
