@@ -3,13 +3,15 @@
    <div class="content">
 
       <% @order.meals.each do |meal| %>
-        <%= meal.name %>
-        <% if meal.dietary.present? %>
-          <%= meal.dietary%>
+        <p><%= meal.name %></p>
+        <% if meal.dietaries.present? %>
+        <% meal.dietaries.each do |dietary| %>
+          <p><%= dietary.name%></p>
+        <% end %>
         <% end %>
        <!--  meal.meal_order.quantity -->
         <% meal.meal_orders do |meal_order| %>
-          <%= meal_order.quantity %>
+          <p><%= meal_order.quantity %></p>
         <% end %>
       <% end %>
 
