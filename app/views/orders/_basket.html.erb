@@ -6,49 +6,85 @@
 <%# end %>
 
 <div class="basket-container">
-  <h1> Basket </h1>
-  <ul>
+    <h2> Shopping cart: </h2>
+  <!-- <ul>
     <li>Status: <%= @order.status %></li>
     <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
-  <ul>
+  <ul> -->
 
-  <div class="content">
-    <% @order.meal_orders.each do |meal_order| %>
-      <div class="row">
-        <div class="col-xs-6 col-xs-offset-4">
-          <%= meal_order.meal.name %>
-          <% if meal_order.meal.dietaries.present? %>
-            <p><strong>Dietary restrictions: </strong></p>
-            <% meal_order.meal.dietaries.each do |dietary| %>
-              <p><%= dietary.name %></p>
-            <% end %>
-          <% end %>
-          <%= meal_order.quantity %>
+    <div class="content">
+      <div class="basket-content" id="top">
+        <div class="meal-image">
+        </div>
+        <div class="meal-order-dietary"></div>
+        <div class="mealorder-summary">
+          <div class="meal-info price">
+            <p><strong>Price:</strong></p></div>
+          <div class="meal-info quantity">
+            <p><strong>Quantity:</strong></p></div>
+          <div class="meal-info name"><p><strong>Name:</strong></p></div>
         </div>
       </div>
-    <% end %>
+      <% @order.meal_orders.each do |meal_order| %>
+        <div class="basket-content">
+          <div class="meal-image">
+            <% if meal_order.meal.photo? %>
+              <div class="photy" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path meal_order.meal.photo, quality: "auto" %>');">
+              </div>
+            <% else %>
+              <%= image_tag("banner.jpg", width: 50, height: 50) %>
+            <% end %>
+          </div>
+          <% if meal_order.meal.dietaries.present? %>
+            <div class="mealorder-dietary">
+              <p><strong>Dietary restrictions: </strong></p>
+              <% meal_order.meal.dietaries.each do |dietary| %>
+                <p><%= dietary.name %></p>
+              <% end %>
+            </div>
+          <% end %>
+          <div class="mealorder-summary">
+            <div class="meal-info price">
+              £ <%= meal_order.meal.price%></div>
+            <div class="meal-info quantity"><%= meal_order.quantity %> </div>
+            <div class="meal-info name"> <%= meal_order.meal.name %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="summary">
+      <div class="order-summary">
+        <div class="add-recipe">
+          <%= link_to "add more recipes", meals_path %>
+        </div>
+        <div class="order-details">
+          <h3> Purchase <%= @order.status %>: </h3>
+          <%= form_tag order_payments_path(@order), class: 'bpayment-form' do %>
+            <article>
+              <label class="amount">
+                <span>Total amount: <%= humanized_money_with_symbol(@order.amount) %></span>
+              </label>
+            </article>
 
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-name="My meal"
+              data-email="<%= current_user.email %>""
+              data-amount="<%= @order.amount_cents %>"
+              data-currency="<%= @order.amount.currency %>">
+            </script>
+          <% end %>
+        </div>
+      </div>
+    </div>
+</div>
 
-    <%= link_to "add more recipes", meals_path %>
-   </div>
-   <!-- <div class="amount">
+ <!--  <div class="order-status">
+         <ul>
+            <li>Status: <%= @order.status %></li>
+            <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
+         <ul>
+      </div> -->
+       <!-- <div class="amount">
      @order
    </div> -->
-<!-- app/views/payments/new.html.erb -->
-<%= form_tag order_payments_path(@order) do %>
-  <article>
-    <label class="amount">
-      <span>Amount: <%= humanized_money_with_symbol(@order.amount) %></span>
-    </label>
-  </article>
-
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-name="My meal"
-    data-email="<%= current_user.email %>""
-    data-amount="<%= @order.amount_cents %>"
-    data-currency="<%= @order.amount.currency %>"></script>
-<% end %>
-
-
- </div>
