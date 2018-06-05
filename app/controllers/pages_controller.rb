@@ -9,6 +9,7 @@ class PagesController < ApplicationController
 
   def dashboard
     @meals = current_user.meals
+    @conversations = Conversation.all
   end
 
 end
