@@ -1,0 +1,49 @@
+// containers - wrappers
+
+.confirmation-wrapper {
+  display: flex;
+  // justify-content: space-around;
+  padding: 40px 100px;
+  margin: 50px 100px;
+  background-color: white;
+  // align-items: center;
+  flex-wrap: wrap;
+}
+.confirmation-container {
+  margin: auto;
+}
+
+#title {
+ // padding: 40px 100px;
+ margin: 10px 100px;
+}
+
+#map {
+  flex: 0 0 400px;
+
+}
+// confiramtion content
+
+.meal-description {
+  display: flex;
+  justify-content:space-between;
+  text-align: right;
+
+}
+
+.order-container {
+  margin-left: 5px;
+  min-width: 40%;
+}
+
+.meal-id {
+  margin-buttom: 30px;
+  font-size:30px;
+}
+
+// .total {
+//   // position: absolute;
+// //   bottom:
+// }
+
+// #DADEDE

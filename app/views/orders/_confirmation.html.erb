@@ -1,22 +1,44 @@
- <div class="basket-container">
-   <h1> Your order </h1>
-   <div class="content">
-
-      <% @order.meals.each do |meal| %>
-        <%= meal.name %>
-        <% if meal.dietary.present? %>
-          <%= meal.dietary%>
+<div class="confirmation-container">
+  <h1 id= "title"> Order Confirmation</h1>
+  <div class="confirmation-wrapper">
+    <div id="map" style="width: 40%; height: 400px;" data-markers= " <%= @markers.to_json %> ">
+    </div>
+    <div class="order-container">
+      <div class="meal-order">
+        <div class="meal-id">
+          <p> Order n. <%= @order.id %></p>
+        </div>
+        <% @order.meal_orders.each do |meal_order| %>
+        <div class="meal-content">
+          <div class="meal-description">
+            <p> Quantity: <%= meal_order.quantity %></p>
+            <p> Price: £<%= meal_order.meal.price %></p>
+            <p> Meal : <%= meal_order.meal.name %></p>
+          </div>
+        </div>
         <% end %>
-       <!--  meal.meal_order.quantity -->
-        <% meal.meal_orders do |meal_order| %>
-          <%= meal_order.quantity %>
+      </div>
+      <div class="chef-details">
+        <% @order.meal_orders.map(&:meal).map(&:user).uniq!.each do |user| %>
+         <!--  <p><%= user.first_name %> <%= user.last_name %></p> -->
+         <p>Find <%= user.first_name %><%= user.last_name %> at <%= user.address %></p>
         <% end %>
-      <% end %>
-   </div>
-   <!-- <div class="amount"> price
-     @order
-   </div> -->
-   <!-- stripe paybuttom -->
+      </div>
+      <!-- <div class="total">
+        <article>
+          <label class="amount">
+            <span>Total amount: <%= humanized_money_with_symbol(@order.amount) %></span>
+          </label>
+        </article>
+      </div> -->
+    </div>
+    <div class="total">
+      <article>
+        <label class="amount">
+          <span>Total amount: <%= humanized_money_with_symbol(@order.amount) %></span>
+        </label>
+      </article>
+    </div>
+  </div>
+</div>
 
-
- </div>
