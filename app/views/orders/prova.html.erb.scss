@@ -1,30 +1,5 @@
+ <% @order.meal_orders.each do |meal_order| %>
 
-
-<%#= form_tag orders_path do %>
-  <%#= hidden_field_tag 'meal_id', @meal.id %>
-  <%#= submit_tag 'Purchase', class: 'btn btn-primary' %>
-<%# end %>
-
-<div class="basket-container">
-    <h2> Shopping cart: </h2>
-  <!-- <ul>
-    <li>Status: <%= @order.status %></li>
-    <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
-  <ul> -->
-
-    <div class="content">
-      <div class="top-bar" id="top">
-        <div class="topbar-details">
-          <p><strong>Meal details</strong></p>
-        </div>
-        <div class="topbar-summary">
-          <div class="topbar price">
-            <p><strong>Price:</strong></p></div>
-          <div class="topbar quantity">
-            <p><strong>Quantity:</strong></p></div>
-        </div>
-      </div>
-      <% @order.meal_orders.each do |meal_order| %>
         <div class="basket-content"> <!-- row & col??  -->
           <div class="meal-image">
             <% if meal_order.meal.photo? %>
@@ -62,7 +37,7 @@
           <%= link_to "add more recipes", meals_path, class: 'btn btn-primary'%>
         </div>
         <div class="order-details">
-          <p> Purchase <%= @order.status %>: </p>
+          <h3> Purchase <%= @order.status %>: </h3>
           <%= form_tag order_payments_path(@order), class: 'bpayment-form' do %>
             <article>
               <label class="amount">
@@ -82,14 +57,3 @@
         </div>
       </div>
     </div>
-</div>
-
- <!--  <div class="order-status">
-         <ul>
-            <li>Status: <%= @order.status %></li>
-            <li>Amount: <%= humanized_money_with_symbol(@order.amount) %></li>
-         <ul>
-      </div> -->
-       <!-- <div class="amount">
-     @order
-   </div> -->
