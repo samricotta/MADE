@@ -9,24 +9,25 @@
 
 <div class="home-section">
   <div class="bigger-card" style="background-image: url(<%= photo %>)">
-  <!--   <%= top_chef.first_name %> -->
+
     <div class="description">
-      <p><%#= meal.description %></p>
+      <p></p>
     </div>
     <div class="lower-card">
       <h2><%= top_chef.first_name.upcase %></h2>
       <div>
-        <span>£<%# meal.price %></span>
+        <span><%# meal.price %></span>
         <i class="far fa-heart"></i>
       </div>
     </div>
   </div>
 
   <div class="cards-home">
+    <% photo2 = "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9647d95a500b5e222258fb03ed086ed1&auto=format&fit=crop&w=700&q=80" %>
     <% four_meals.each do |meal| %>
 
 
-      <div class= "card" style= "background-image: url(<%= photo %>)">
+      <div class= "card" style= "background-image: url(<%= photo2 %>)">
         <%= link_to "", meal_path(meal), class: "card-link" %>
           <div class="description">
             <p><%#= meal.description %></p>
@@ -34,7 +35,7 @@
           <div class="lower-card">
             <h2><%= meal.name.upcase %></h2>
           <div>
-            <span>£<%#= meal.price %></span>
+            <span>£<%= meal.price %></span>
             <i class="far fa-heart"></i>
           </div>
         </div>
