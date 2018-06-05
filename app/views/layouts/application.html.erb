@@ -37,6 +37,9 @@
     <%= javascript_pack_tag 'application' %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_SERVER_API_KEY']}" %> <!-- missing claudinary key -->
     <%= javascript_pack_tag "map" %>
-
+    <% if !user_signed_in? %>
+      <%= javascript_pack_tag "sign_in" %>
+    <% end %>
+    <%= yield(:after_js) %>
   </body>
 </html>

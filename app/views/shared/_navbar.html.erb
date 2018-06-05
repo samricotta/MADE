@@ -1,8 +1,7 @@
 <div class="navbar-top">
   <%= link_to root_path do %>
-   <i class="fas fa-utensils" id="logo"></i>
+    <i class="fas fa-utensils" id="logo"></i>
   <% end %>
-
 
   <div class="navbar-right hidden-xs hidden-sm">
     <% if user_signed_in? %>
@@ -15,23 +14,11 @@
       <% else %>
         <%= link_to "Become a chef", new_meal_path, class: "navbar-item navbar-link" %>
         <%= link_to "Sign In",  new_user_session_path, class: "navbar-item navbar-link" %>
-
-
-
-
-
       <% end %>
-
-    <div class="navbar-wagon-item">
-      <div class="dropdown">
-    <!--     <img src="https://kitt.lewagon.com/placeholder/users/ssaunier" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
-        <!-- <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
-        </ul> -->
-      </div>
-    </div>
+    <% else %>
+      <%= link_to "Become a chef", "#", id: 'become-a-chef', class: "navbar-item navbar-link", data: { toggle: 'modal', target: '#myModal' } %>
+      <%= link_to "Sign In",  new_user_session_path, id: 'sign-in-navbar-link', class: "navbar-item navbar-link", data: { toggle: 'modal', target: '#myModal' } %>
+    <% end %>
   </div>
 
   <!-- Dropdown appearing on mobile only -->
@@ -44,9 +31,12 @@
           <li><%= link_to "Log Out",  destroy_user_session_path, method: :delete, class: "navbar-item navbar-link" %></li>
           <li><%= link_to "Dashboard", dashboard_path(meals: true), class: "navbar-item navbar-link" %></li>
         <% else %>
-          <li><%= link_to "Sign In",  new_user_session_path, class: "navbar-item navbar-link" %></li>
+          <li><%= link_to "Sign In",  new_user_session_path, id: 'sign-in-navbar-link', class: "navbar-item navbar-link", data: { toggle: 'modal', target: '#myModal' } %></li>
+          <li><%= link_to "Become a chef", "#", id: 'become-a-chef', class: "navbar-item navbar-link", data: { toggle: 'modal', target: '#myModal' } %></li>
         <% end %>
       </ul>
     </div>
   </div>
 </div>
+
+<%= render 'shared/sign_in_modal' %>
