@@ -9,12 +9,12 @@
          <%= link_to "Dashboard", dashboard_path(meals: true), class: "navbar-item navbar-link" %>
            <%= link_to "Log Out",  destroy_user_session_path, method: :delete, class: "navbar-item navbar-link" %>
              <% if current_user.meal_orders.any? %>
-          <%= link_to 'View basket', order_path(current_user.orders.last), :class=> " navbar-item btn-all" %>
-        <% end %>
-      <% else %>
-        <%= link_to "Become a chef", new_meal_path, class: "navbar-item navbar-link" %>
-        <%= link_to "Sign In",  new_user_session_path, class: "navbar-item navbar-link" %>
-      <% end %>
+                <%= link_to 'View basket', order_path(current_user.orders.last), :class=> " navbar-item btn-all" %>
+              <% end %>
+    <!--   <#% else %>
+        <%#= link_to "Become a chef", new_meal_path, class: "navbar-item navbar-link" %>
+        <%#= link_to "Sign In",  new_user_session_path, class: "navbar-item navbar-link" %>
+      <%# end %> -->
     <% else %>
       <%= link_to "Become a chef", "#", id: 'become-a-chef', class: "navbar-item navbar-link", data: { toggle: 'modal', target: '#myModal' } %>
       <%= link_to "Sign In",  new_user_session_path, id: 'sign-in-navbar-link', class: "navbar-item navbar-link", data: { toggle: 'modal', target: '#myModal' } %>
