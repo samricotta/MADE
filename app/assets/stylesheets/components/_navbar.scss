@@ -78,6 +78,11 @@
 .nav-input {
   border-radius: 3px;
   border: 1px solid $our-color;
+  width: 200px;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom:10px;
+  background-color: #ffffff96;
 }
 
 .nav-input:focus {
@@ -96,3 +101,6 @@
   color: $our-color;
 }
 
+.nav-input#dietary {
+  padding: 5px;
+}

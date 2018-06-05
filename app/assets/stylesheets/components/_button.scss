@@ -20,3 +20,11 @@
   background: white;
 
 }
+
+.btn-all:focus {
+  border: 1px solid $our-color;
+  text-decoration: none;
+  color: $our-color;
+  background: white;
+
+}
