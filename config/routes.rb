@@ -12,8 +12,13 @@ Rails.application.routes.draw do
     resources :payments, only: [:new, :create]
   end
 
+  resources :conversations do
+    resources :messages
+ end
 
   get '/dashboard', to: 'pages#dashboard'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/dashboard', to: 'pages#dashboard'
 end
+
+
