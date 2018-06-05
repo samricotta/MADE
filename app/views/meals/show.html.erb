@@ -91,25 +91,26 @@
               <% end %>
               <% end %>
 
-            <% if @meal.ordered_and_not_reviewed?(current_user) %>
+            <% if user_signed_in? %>
+              <% if @meal.ordered_and_not_reviewed?(current_user) %>
 
-              <h3>How was your order from <%=@meal.name%>? </h3>
+                <h3>How was your order from <%=@meal.name%>? </h3>
 
-              <a href="#" class="btn-all" id="addReview">add a review</a>
-              <div id="form" class="hidden">
-              <h3>Write your review for <%=@meal.name%> </h3>
-              <%= simple_form_for [@meal, @meal_review], method: :post do |f| %>
-                <%= f.input :quality, collection: 1..5 %>
-                <%= f.input :portion_size, collection: 1..5 %>
-                <%= f.input :rating, collection: 1..5 %>
-                <%= f.input :comment %>
-                <%= f.button :submit, class: "btn btn-all" %>
+                <a href="#" class="btn-all" id="addReview">add a review</a>
+                <div id="form" class="hidden">
+                  <h3>Write your review for <%=@meal.name%> </h3>
+                  <%= simple_form_for [@meal, @meal_review], method: :post do |f| %>
+                    <%= f.input :quality, collection: 1..5 %>
+                    <%= f.input :portion_size, collection: 1..5 %>
+                    <%= f.input :rating, collection: 1..5 %>
+                    <%= f.input :comment %>
+                    <%= f.button :submit, class: "btn btn-all" %>
+                  <% end %>
+                </div>
               <% end %>
-
-              </div>
-            <% end %>
-            <% if @order.length == 1 %>
-              <%= link_to "cart", order_path(@order[0]) %>
+              <% if @order.length == 1 %>
+                <%= link_to "cart", order_path(@order[0]) %>
+              <% end %>
             <% end %>
           </div>
         <!-- <p><%#= link_to "Edit your password", edit_user_registration_path %></p> -->
