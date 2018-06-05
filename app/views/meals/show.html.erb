@@ -107,7 +107,7 @@
           <div class="content-right">
             <h3><%= @meal.user.first_name %></h3>
             <p><%= @meal.user.address %></p>
-            <hr id= "hr-line">
+            <hr id="hr-line">
             <p>Portions left: <%= @meal.price_cents %></p>
             <p>£ <%= @meal.portions_left %></p>
             <% if user_signed_in? %>
