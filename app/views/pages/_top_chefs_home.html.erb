@@ -9,24 +9,40 @@
 
 <div class="home-section">
   <div class="bigger-card" style="background-image: url(<%= photo %>)">
-    <%= top_chef.first_name %>
+  <!--   <%= top_chef.first_name %> -->
+    <div class="description">
+      <p><%#= meal.description %></p>
+    </div>
+    <div class="lower-card">
+      <h2><%= top_chef.first_name.upcase %></h2>
+      <div>
+        <span>£<%# meal.price %></span>
+        <i class="far fa-heart"></i>
+      </div>
+    </div>
   </div>
-  <div class="cards">
+
+  <div class="cards-home">
     <% four_meals.each do |meal| %>
-      <% if meal.photo? %>
-        <% photo = cl_image_path meal.photo %>
-      <% else %>
-        <% photo = "https://images.unsplash.com/photo-1502725592220-bcf20e5035c5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b5e59dd5e6e5f90409e2a7a07c7a5e6f&auto=format&fit=crop&w=1050&q=80" %>
-      <% end %>
-      <div class= "card" style= "background-image:linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(69,68,68,0.8) 100%), url('<%= photo %>')">
-        <div class= "card_content">
-          <%= link_to meal.name, meal_path(meal) %>
-          <i class="far fa-heart heart"></i>
+
+
+      <div class= "card" style= "background-image: url(<%= photo %>)">
+        <%= link_to "", meal_path(meal), class: "card-link" %>
+          <div class="description">
+            <p><%#= meal.description %></p>
+          </div>
+          <div class="lower-card">
+            <h2><%= meal.name.upcase %></h2>
+          <div>
+            <span>£<%#= meal.price %></span>
+            <i class="far fa-heart"></i>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
 
 
 
