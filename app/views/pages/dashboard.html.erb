@@ -1,21 +1,49 @@
 
-<h1><%= current_user.first_name %> <%=current_user.last_name%></h1>
+
 <%# if current_user.photo? %>
 <%#= current_user.photo %>
  <%# end %>
   <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-    <li role="presentation"><a href="#mealsihaveordered" aria-controls="mealsihaveordered" role="tab" data-toggle="tab">Meals I have ordered</a></li>
-    <li role="presentation"><a href="#cookedbyme" aria-controls="cookedbyme" role="tab" data-toggle="tab">Cooked by me</a></li>
-    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-    <li role="presentation"><%= link_to "Edit your profile", edit_user_registration_path %></li>
-  </ul>
+<div class="wrap">
+    <ul class="nav nav-underline nav-underline-center" role="tablist" id="container-tabs">
+      <li role="presentation" class="tab-underline active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+      <li role="presentation"><a class="tab-underline" href="#mealsihaveordered" aria-controls="mealsihaveordered" role="tab" data-toggle="tab">Meals I have ordered</a></li>
+      <li role="presentation"><a class="tab-underline" href="#cookedbyme" aria-controls="cookedbyme" role="tab" data-toggle="tab">Cooked by me</a></li>
+      <li role="presentation"><a class="tab-underline" href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+    </ul>
+
+
+
+
+
+
+
 
 
   <!-- Tab panes -->
+  <!-- TAB #1 -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home"></div>
+    <div role="tabpanel" class="tab-pane active" id="home">
+      <div class="container-dashboard">
+        <div class="flex">
+          <div class="flex-container-left">
+            <h1> Hi <%= current_user.first_name %> <%=current_user.last_name%> !</h1>
+          </div>
+          <div class="flex-container-right">
+            <% if current_user.photo? %>
+              <% photo = cl_image_path current_user.photo %>
+            <% else %>
+              <% photo = "https://images.unsplash.com/photo-1519238397241-5bf4804bd0db?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=68edffd21eecaf32465725da363ebf4a&auto=format&fit=crop&w=1510&q=80" %>
+            <% end %>
+            <div class="img-profile" style="background-image: url(<%= photo %>);"></div>
+          </div>
+        </div>
+        <hr class="dashboard-line">
+         <p><%= current_user.first_name %></p>
+         <p><%= current_user.last_name %></p>
+      </div>
+    </div>
+    <!-- TAB #2 -->
     <div role="tabpanel" class="tab-pane" id="mealsihaveordered">
 
 
@@ -45,5 +73,44 @@
     </div>
     <div role="tabpanel" class="tab-pane" id="messages"></div>
   </div>
-
+  </div>
 </div>
+
+
+<script>
+  let arrayChild = [];
+  const navUnderline = Array.from(document.querySelector(".nav-underline").childNodes);
+  navUnderline.forEach((child) => {
+    if (navUnderline.indexOf(child) % 2 != 0) {
+      arrayChild.push(child)
+    }
+  })
+  const tabPane = Array.from(document.querySelectorAll(".tab-pane"));
+  arrayChild.forEach((li) => {
+    li.addEventListener("click", (e) => {
+      console.log(e.currentTarget)
+      arrayChild.forEach((list) => {
+        // if (list.classList.contains("tab-underline")) {
+        //   list.classList.remove("tab-underline")
+        // }
+        if (list.classList.contains("active")) {
+          list.classList.remove("active")
+          if (tabPane[arrayChild.indexOf(list)].classList.contains("active")) {
+            tabPane[arrayChild.indexOf(list)].classList.remove("active")
+          }
+        }
+      })
+      e.currentTarget.classList.add("tab-underline");
+      e.currentTarget.classList.add("active");
+      tabPane[arrayChild.indexOf(e.currentTarget)].classList.add("active")
+    })
+  })
+// var btnContainer = document.getElementById("container-tabs");
+// var btns = btnContainer.getElementsByClassName("tab-underline");
+// var btns.attachEvent('onclick', function (event) {
+// var btns.classList.remove("active")
+// var btns.add("active")
+// });
+// }
+
+</script>

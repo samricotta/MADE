@@ -10,7 +10,7 @@
          <%= link_to "Dashboard", dashboard_path(meals: true), class: "navbar-item navbar-link" %>
            <%= link_to "Log Out",  destroy_user_session_path, method: :delete, class: "navbar-item navbar-link" %>
              <% if current_user.meal_orders.any? %>
-          <%= link_to 'View basket', order_path(current_user.orders.last), :class=> " navbar-item btn btn-primary" %>
+          <%= link_to 'View basket', order_path(current_user.orders.last), :class=> " navbar-item btn-all" %>
         <% end %>
       <% else %>
         <%= link_to "Become a chef", new_meal_path, class: "navbar-item navbar-link" %>
