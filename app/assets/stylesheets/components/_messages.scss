@@ -1,0 +1,44 @@
+.item-message-blue {
+  text-align: right;
+  background-color: #31DDEA;
+  color: white;
+  font-size: 22px;
+  margin-top: 18px;
+  border-radius: 14px;
+  padding: 28px;
+}
+
+
+.item-message-green {
+  text-align: left;
+  background-color: #2DDBA3;
+  color: white;
+  font-size: 22px;
+  margin-top: 18px;
+  border-radius: 14px;
+  padding: 28px;
+}
+
+.text-messages {
+  min-height: 100vh;
+  background-color: white;
+  position: relative;
+}
+
+.reply {
+  position: absolute;
+  bottom: 0;
+  width: 95%;
+}
+
+.item-message {
+  font-size: 35px;
+}
+
+.header-message {
+  color: #d7e3e4;
+}
+
+.message-reply{
+  font-size: 31px;
+}
