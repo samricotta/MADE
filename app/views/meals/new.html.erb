@@ -1,18 +1,7 @@
-<!-- <div class="wrapper">
-  <div class="content">
-    <div class="form-style">
-      <div class="description text-center">
-      </div>
-
-
-    </div>
-
-  </div>
-</div> -->
 
 <div class="form">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="form-style">
 
         <div class="description text-center">
@@ -21,7 +10,8 @@
         </div>
 
         <%= render "form", meal: @meal %>
-
+        <p>or</p>
+        <%= link_to "Go back", dashboard_path , class: "btn btn-all" %>
       </div>
     </div>
   </div>

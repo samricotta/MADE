@@ -19,7 +19,7 @@
 
 <div class="form">
   <div class="row">
-    <div class="col-xs-6 col-xs-offset-3">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
       <div class="form-style">
         <div class="description text-center">
           <h1>Update your meal details</h1>
@@ -27,7 +27,7 @@
 
         <%= render "form", meal: @meal, dietary: @meal.dietaries %>
         <p>or</p>
-        <%= link_to "Go back", meals_path , class: "btn btn-all" %>
+        <%= link_to "Go back", dashboard_path , class: "btn btn-all" %>
       </div>
     </div>
   </div>

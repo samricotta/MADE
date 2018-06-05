@@ -23,7 +23,6 @@
     <p><%= @meal.portions_left %></p>
     <p><%= link_to "index", meals_path%></p>
     <p><%= link_to "home", root_path%></p>
-    <p><%= @meal.dietaries.map(&:name).join(", ") %></p>
     <% if user_signed_in? %>
       <%= render "order_form"%>
 

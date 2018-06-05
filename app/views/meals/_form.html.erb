@@ -8,19 +8,20 @@
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
     <%= f.input :cuisine %>
-    <%= f.simple_fields_for :meal_dietaries do |dietaries_form|%>
+    <p>Select all the dietary requirements that your meal meets:</p>
 
+    <div class="dietaries">
       <% @dietaries.each do |dietary| %>
 
-        <span>
-          <input type="checkbox" class="hidden" value="<%= dietary.id %>" name="meal[meal_dietaries][dietaries][]" id="meal_meal_dietaries_dietaries_<%= dietary.id %>">
-          <label class="collection_check_boxes" for="meal_meal_dietaries_dietaries_<%= dietary.id %>">
-            <%= dietary.name %>
-          </label>
-        </span>
+        <input type="checkbox" class="hidden" value="<%= dietary.id %>" name="meal[meal_dietaries][dietaries][]" id="meal_meal_dietaries_dietaries_<%= dietary.id %>">
+
+        <label class="collection_check_boxes dietary" id="testest"  for="meal_meal_dietaries_dietaries_<%= dietary.id %>">
+          <%= dietary.name %>
+        </label>
 
       <% end %>
-    <% end %>
+
+    </div>
   </div>
 
   <div class="text-center">
@@ -28,6 +29,27 @@
   </div>
 <% end %>
 
+<!-- some javascript to toggle the active class on the selected dietaries -->
+<%= content_for(:after_js) do %>
+  <script>
 
-<!-- collection: Tag.all, as: :check_boxes -->
-<!-- input_html: { multiple: true } -->
+    document.querySelectorAll(".dietary").forEach((dietary) => {
+      dietary.addEventListener("click", (event) => {
+        console.log(event);
+        console.log( event.currentTarget.classList);
+        event.currentTarget.classList.toggle("active-dietary");
+      });
+    });
+
+    // $(document).ready(function(){
+    //   $(".dietary").click(function(){
+    //     $(this).toggleClass("active");
+    //   });
+    // });
+  </script>
+<% end %>
+<!-- Please, don't delete this comment! -->
+<!-- This lines generate the above HTML for the checkboxes -->
+<%#= f.simple_fields_for :meal_dietaries do |dietaries_form|%>
+  <%#= dietaries_form.collection_check_boxes :dietaries, @dietaries, :to_param, :name, { checked: meal.dietaries.map(&:to_param) } %>
+<%# end %>
