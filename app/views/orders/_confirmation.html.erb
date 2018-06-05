@@ -33,10 +33,11 @@
       </div> -->
     </div>
     <div class="total">
-      <article>
+      <article class="total-amount">
         <label class="amount">
           <span>Total amount: <%= humanized_money_with_symbol(@order.amount) %></span>
         </label>
+        <p>You have order <%= @order.total_items %> meals</p>
       </article>
     </div>
   </div>
