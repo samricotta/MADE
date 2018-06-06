@@ -1,11 +1,13 @@
 .item-message-blue {
-  text-align: right;
-  background-color: #31DDEA;
-  color: white;
-  font-size: 22px;
-  margin-top: 18px;
-  border-radius: 14px;
-  padding: 28px;
+    width: 50%;
+    text-align: right;
+    margin: 0 auto;
+    background-color: #31DDEA;
+    color: white;
+    font-size: 22px;
+    margin-top: 18px;
+    border-radius: 14px;
+    padding: 28px;
 }
 
 
@@ -22,11 +24,9 @@
 .text-messages {
   min-height: 100vh;
   background-color: white;
-  position: relative;
 }
 
 .reply {
-  position: absolute;
   bottom: 0;
   width: 95%;
 }
