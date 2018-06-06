@@ -60,9 +60,13 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
-    dietary_ids = params[:meal][:meal_dietaries][:dietaries]
-    dietary_ids.delete('')
     @meal.user = current_user
+    if params[:meal][:meal_dietaries]
+      dietary_ids = params[:meal][:meal_dietaries][:dietaries]
+      dietary_ids.delete('')
+    else
+      dietary_ids = []
+    end
     if @meal.save
       dietary_ids.each do |dietary_id|
         dietary = Dietary.find(dietary_id)
@@ -71,6 +75,7 @@ class MealsController < ApplicationController
       redirect_to meal_path(@meal)
     else
       # raise
+      @dietaries = Dietary.all
       render :new
     end
   end
@@ -83,7 +88,7 @@ class MealsController < ApplicationController
   private
 
   def meal_params
-    params.require(:meal).permit(:name, :description, :ingredients, :portions_left, :cuisine, :price, :dietary, :photo)
+    params.require(:meal).permit(:name, :description, :ingredients, :portions_left, :cuisine, :price, :dietary, :photo, :ready_at)
   end
 
   def set_meal

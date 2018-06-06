@@ -8,6 +8,17 @@ class Meal < ApplicationRecord
   has_many :dietaries, through: :meal_dietaries
   mount_uploader :photo, PhotoUploader
 
+
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :ingredients, presence: true
+  validates :price_cents, numericality: { greater_than: 0 }
+  validates :portions_left, numericality: { greater_than: 0 }
+
+
+
+
+
   def ordered_and_not_reviewed?(user)
     # is it order?
     ordered = self.orders.select { |order| order.status == "paid" }.map(&:user_id).include?(user.id)

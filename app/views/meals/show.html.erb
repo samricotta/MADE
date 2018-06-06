@@ -20,7 +20,7 @@
              <hr>
              <% if current_user %>
               <h3>About <%=@meal.user.first_name %></h3>
-              <%= link_to "send message", conversations_path(sender_id: current_user.id, recipient_id: @meal.user.id), method: "post" %>
+                <%= link_to "send message", conversations_path(sender_id: current_user.id, recipient_id: @meal.user.id), method: "post", class: "btn-all" %>
             <% end %>
              <hr>
             <h3>More from <%= @meal.user.first_name %></h3>
@@ -98,7 +98,7 @@
 
       <div class="right-container">
          <% if @meal.user.photo? %>
-            <p><% photo = cl_image_tag @meal.user.photo, class: "avatar" %></p>
+            <% photo = cl_image_path @meal.user.photo %>
           <% else %>
           <% photo = "https://images.unsplash.com/photo-1519238397241-5bf4804bd0db?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=68edffd21eecaf32465725da363ebf4a&auto=format&fit=crop&w=1510&q=80" %>
          <% end %>
@@ -108,8 +108,9 @@
             <h3><%= @meal.user.first_name %></h3>
             <p><%= @meal.user.address %></p>
             <hr id="hr-line">
-            <p>Portions left: <%= @meal.price_cents %></p>
-            <p>£ <%= @meal.portions_left %></p>
+            <p>Portions left: <%= @meal.portions_left %></p>
+            <p><%= humanized_money_with_symbol(@meal.price) %></p>
+            <p><%= @meal.ready_at %></p>
             <% if user_signed_in? %>
               <%= render "order_form"%>
             <% else %>

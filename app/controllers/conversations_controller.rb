@@ -13,7 +13,7 @@ def create
   else
   @conversation = Conversation.create!(conversation_params)
   end
-  redirect_to conversation_messages_path(@conversation)
+  redirect_to dashboard_path(messages: true, selected_conversation: @conversation.id)
 end
 
 private

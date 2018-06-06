@@ -1,10 +1,14 @@
-<% if @meal.portions_left != nil %>
-
-
-  <%= simple_form_for [@meal, @meal_order] do |f| %>
-    <%= f.input :quantity, collection: 1..@meal.portions_left %>
-    <%= f.submit "add to basket", class: "btn-all" %>
-  <% end %>
+<% if current_user == @meal.user %>
+  <h4>It was ordered <%= @meal.orders.count %> times!</h4>
 <% else %>
-  <p>No more portions available</p>
+  <% if @meal.portions_left != nil %>
+
+
+    <%= simple_form_for [@meal, @meal_order] do |f| %>
+      <%= f.input :quantity, collection: 1..@meal.portions_left %>
+      <%= f.submit "add to basket", class: "btn-all" %>
+    <% end %>
+  <% else %>
+    <p>No more portions available</p>
+  <% end %>
 <% end %>
