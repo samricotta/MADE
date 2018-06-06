@@ -41,21 +41,23 @@
 
         <!-- Nav tabs -->
         <ul class="nav nav-underline nav-underline-center" role="tablist">
-          <li role="presentation" class="nav-item active"><a class="tab-underline" href="#myorders" aria-controls="myorders" role="tab" data-toggle="tab">My orders</a></li>
+          <li role="presentation" class="nav-item <%= 'active' unless params[:messages] %>"><a class="tab-underline" href="#myorders" aria-controls="myorders" role="tab" data-toggle="tab">My orders</a></li>
           <li role="presentation" class="nav-item"><a class="tab-underline" href="#mealsivemade" aria-controls="mealsivemade" role="tab" data-toggle="tab">Meals i've made</a></li>
-          <li role="presentation" class="nav-item"><a class="tab-underline" href="#msgs" aria-controls="msgs" role="tab" data-toggle="tab">Messages</a></li>
+          <li role="presentation" class="nav-item <%= 'active' if params[:messages] %>"><a class="tab-underline" href="#msgs" aria-controls="msgs" role="tab" data-toggle="tab">Messages</a></li>
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
-          <div role="tabpanel" class="tab-pane active" id="myorders">
+          <div role="tabpanel" class="tab-pane <%= 'active' unless params[:messages] %>" id="myorders">
             <%= render "my_orders" %>
           </div>
           <div role="tabpanel" class="tab-pane" id="mealsivemade">
             <%= render "my_meals" %>
           </div>
-          <div role="tabpanel" class="tab-pane" id="msgs">
-            messages later
+          <div role="tabpanel" class="tab-pane <%= 'active' if params[:messages] %>" id="msgs">
+            <% if @conversations.any? %>
+              <%= render "messages_page" %>
+            <% end %>
           </div>
         </div>
 
@@ -64,44 +66,3 @@
   </div>
 </div>
 
-
-<script>
-
-
-  // let arrayChild = [];
-  // const navUnderline = Array.from(document.querySelector(".nav-underline").childNodes);
-  // navUnderline.forEach((child) => {
-  //   if (navUnderline.indexOf(child) % 2 != 0) {
-  //     arrayChild.push(child)
-  //   }
-  // })
-  // const tabPane = Array.from(document.querySelectorAll(".tab-pane"));
-  // arrayChild.forEach((li) => {
-  //   li.addEventListener("click", (e) => {
-  //     console.log(e.currentTarget)
-  //     arrayChild.forEach((list) => {
-  //       // if ((list.classList.contains("tab-underline")) && (arrayChild.indexOf(list) != 0)) {
-  //       //   list.classList.remove("tab-underline")
-  //       // }
-  //       if (list.classList.contains("tab-underline")) {
-  //         list.classList.remove("tab-underline")
-  //       }
-  //       if (arrayChild.indexOf(list != 0)) {
-  //         arrayChild[0].childNodes[0].classList.add('tab-underline')
-  //       }
-  //       if (list.classList.contains("active")) {
-  //         list.classList.remove("active")
-  //         // list.classList.remove("tab-underline")
-  //         if (tabPane[arrayChild.indexOf(list)].classList.contains("active")) {
-  //           tabPane[arrayChild.indexOf(list)].classList.remove("active")
-  //         }
-  //       }
-  //     })
-  //     e.currentTarget.classList.add("tab-underline");
-  //     e.currentTarget.classList.add("active");
-  //     tabPane[arrayChild.indexOf(e.currentTarget)].classList.add("active")
-  //   })
-  // })
-
-
-</script>

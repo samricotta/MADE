@@ -1,5 +1,13 @@
 // Specific CSS for your home-page
+body {
+  background-color: white;
+}
+
 .search-input {
   color: black;
   height: 45px;
+}
+
+.min-height-footer {
+  min-height: 100vh;
 }

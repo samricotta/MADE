@@ -1,22 +1,43 @@
- <div class="basket-container">
-   <h1> Your order </h1>
-   <div class="content">
 
-      <% @order.meals.each do |meal| %>
-        <p><%= meal.name %></p>
-        <% if meal.dietaries.present? %>
-          <% meal.dietaries.each do |dietary| %>
-            <p><%= dietary.name%></p>
-          <% end %>
+<div class="confirmation-container">
+  <h1 id= "title"> Order Confirmation</h1>
+  <div class="confirmation-wrapper">
+    <div id="map" style="width: 40%; height: 400px;" data-markers= " <%= @markers.to_json %> ">
+    </div>
+    <div class="order-container">
+      <div class="meal-order">
+        <div class="order-id">
+          <p> Order n. <%= @order.id %></p>
+        </div>
+        <div class="orderconfirmation-summary">
+          <p>You have order <%= @order.total_items %> meals</p>
+        </div>
+        <% @order.meal_orders.each do |meal_order| %>
+        <div class="meal-content">
+          <div class="meal-description">
+            <p> <%= meal_order.meal.name %></p>
+            <div class="quantity-price">
+              <p id="quantity"> <%= meal_order.quantity %></p>
+              <p> £<%= meal_order.meal.price %></p>
+            </div>
+          </div>
+        </div>
         <% end %>
-       <!--  meal.meal_order.quantity -->
-        <% meal.meal_orders do |meal_order| %>
-          <p><%= meal_order.quantity %></p>
+      </div>
+      <div class="chef-details">
+        <% @order.meal_orders.map(&:meal).map(&:user).uniq!.each do |user| %>
+         <!--  <p><%= user.first_name %> <%= user.last_name %></p> -->
+         <p>Find <%= user.first_name %><%= user.last_name %> at <%= user.address %></p>
         <% end %>
-      <% end %>
+      </div>
+    </div>
+    <div class="total">
+      <article class="total-amount">
+        <label class="amount">
+          <span>Total amount: <%= humanized_money_with_symbol(@order.amount) %></span>
+        </label>
+      </article>
+    </div>
+  </div>
+</div>
 
-   </div>
-   <!-- <div class="amount">
-     @order
-   </div> -->
- </div>

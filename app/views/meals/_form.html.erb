@@ -8,10 +8,11 @@
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
     <%= f.input :cuisine %>
+    <%= f.input :ready_at, placeholder: "Ex: My meal will be ready tomorrow from 1pm" %>
     <p>Select all the dietary requirements that your meal meets:</p>
 
     <div class="dietaries">
-      <% @dietaries.each do |dietary| %>
+      <% dietaries.each do |dietary| %>
 
         <input type="checkbox" class="hidden" value="<%= dietary.id %>" name="meal[meal_dietaries][dietaries][]" id="meal_meal_dietaries_dietaries_<%= dietary.id %>">
 

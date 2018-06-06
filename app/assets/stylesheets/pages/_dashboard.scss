@@ -130,6 +130,9 @@ padding: 20px7
 // }
 
 .flex-container-left {
+  position: sticky !important;
+  top: 0 !important;
+  padding-top: 20px;
   margin-right: 50px;
 }
 
@@ -160,7 +163,7 @@ padding: 20px7
   margin-bottom: 10px;
   border-radius: 5px;
   padding-top: 20px;
-  width: 200px;
+  flex: 0 0 200px;
   position: relative;
 }
 
@@ -176,21 +179,21 @@ padding: 20px7
 }
 
 .order-header {
-background-color: $our-color;
-opacity: 0.8;
-color: white;
-padding-left: 10px;
-margin-bottom: 10px;
-padding: 20px;
-display: flex;
-justify-content: space-between;
-height: 60px;
-position: relative;
+  background-color: $our-color;
+  opacity: 0.8;
+  color: white;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  position: relative;
 }
 
 .order-header a{
-text-decoration: none;
-color: white;
+  text-decoration: none;
+  color: white;
 }
 
 .order-header h2 {
@@ -198,6 +201,7 @@ color: white;
 }
 
 .meal-info {
+  flex: 0 1 auto;
   line-height: 1.8;
   padding-left: 10px;
   padding-right: 20px;
