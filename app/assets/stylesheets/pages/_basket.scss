@@ -1,0 +1,145 @@
+
+// basket container
+.basket-container {
+  margin: auto;
+  padding: 1px 10vw;
+}
+.basket-container h2{
+text-align: left;
+}
+.content {
+  // padding: 0px 10vw;
+}
+// meal orders cards
+
+// top basket
+// .topbar {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// }
+#top {
+ padding: 5px;
+ height: 40px;
+ display: flex;
+ justify-content: space-between;
+ // position: relative;
+ align-items : bottom;
+ flex-wrap: wrap;
+}
+.topbar-details {
+  // postion: absolute;
+  bottom : 5 px;
+  left: 300px;
+}
+
+.topbar-summary {
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+  text-align: left;
+  flex-wrap: wrap;
+}
+
+
+
+// middle basket
+
+.basket-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: white;
+  border-radius: 5px;
+  margin: 5px;
+  height: 100px;
+  flex-wrap: wrap;
+}
+
+.meal-image {
+
+}
+
+.photy {
+  width: 180px;
+  height: 90px;
+  box-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  background-size: cover;
+}
+
+
+.mealorder-dietary {
+  width: 30%
+}
+.mealorder-summary {
+  display: flex;
+  justify-content: space-around;
+  width: 30%;
+ }
+
+.meal-info {
+  margin: 0px 10px;
+  text-align: left;
+}
+
+.price {
+  width: 30%;
+
+}
+.quantity {
+  width: 20%;
+}
+.name {
+  // width: 20%;
+  flex-grow: 1;
+}
+
+.meal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+// bottom basket
+
+.basket-summary {
+  // padding: 1px 10vw;
+}
+
+
+.order-summary {
+  display :flex;
+  justify-content :space-between;
+  align-items: center;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+ }
+
+.add-recipe {
+  margin: 10px;
+  text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+}
+
+.order-details {
+  margin: 10px;
+  align-items: center;
+
+}
+.order-details p {
+  text-align: right;
+}
+
+.bpayment-form {
+  text-align: right;
+}
+
+.amount {
+
+}
