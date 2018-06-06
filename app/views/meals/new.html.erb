@@ -9,7 +9,7 @@
           <p>Sell your homemade food in one click</p>
         </div>
 
-        <%= render "form", meal: @meal %>
+        <%= render "form", meal: @meal, dietaries: @dietaries %>
         <p>or</p>
         <%= link_to "Go back", dashboard_path , class: "btn btn-all" %>
       </div>
