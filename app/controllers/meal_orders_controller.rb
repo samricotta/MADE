@@ -36,6 +36,22 @@ class MealOrdersController < ApplicationController
     end
   end
 
+  def update
+    @meal_order = MealOrder.find(params[:id])
+    @meal_order.quantity = params[:meal_order][:quantity].to_i
+    @meal_order.save
+    redirect_to order_path(@meal_order.order)
+  end
+
+  def destroy
+    @meal_order = MealOrder.find(params[:id])
+    order = @meal_order.order
+    @meal_order.destroy
+    redirect_to order_path(order)
+  end
+
+  private
+
   def meal_order_params
     params.require(:meal_order).permit(:quantity, :order_id, :meal_id)
   end

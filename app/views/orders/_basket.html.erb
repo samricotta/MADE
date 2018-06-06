@@ -19,9 +19,14 @@
         </div>
         <div class="topbar-summary">
           <div class="topbar price">
-            <p><strong>Price:</strong></p></div>
+            <p><strong>Price</strong></p>
+          </div>
           <div class="topbar quantity">
-            <p><strong>Quantity:</strong></p></div>
+            <p id="portions"><strong>Quantity</strong></p>
+          </div>
+          <div class="topbar-delete">
+            <p><strong> Delete</strong></p>
+          </div>
         </div>
       </div>
       <% @order.meal_orders.each do |meal_order| %>
@@ -48,10 +53,21 @@
               </div>
           <% end %>
           <div class="mealorder-summary">
-            <div class="meal-info price">
-              <p>£ <%= meal_order.meal.price%></p>
+            <div class="meal-info price"><p>£ <%= meal_order.meal.price%></p> </div>
+            <div class="change-order">
+              <div class="meal-info quantity" id="quantity"><%= meal_order.quantity %> </div>
+              <div class="icon"><i class="far fa-edit" id='edit-quantity-button'></i></div>
+
+              <div id="edit-quantity" class="hidden">
+                <%= simple_form_for([meal_order.meal, meal_order], class: 'form-inline' ) do |f| %>
+                  <%= f.input :quantity, label: false %>
+                  <%= f.button :submit, class: "hidden" %>
+                <% end %>
+              </div>
             </div>
-            <div class="meal-info quantity"><%= meal_order.quantity %> </div>
+            <div class="delete">
+              <%= link_to "Delete", meal_order_path(meal_order), method: :delete %>
+            </div>
           </div>
         </div>
       <% end %>
@@ -59,7 +75,7 @@
     <div class="basket-summary">
       <div class="order-summary">
         <div class="add-recipe">
-          <%= link_to "add more recipes", meals_path, class: 'btn btn-primary'%>
+          <%= link_to "add more meals", meals_path, class: 'btn-all'%>
         </div>
         <div class="order-details">
           <p> Purchase <%= @order.status %>: </p>
@@ -83,6 +99,17 @@
       </div>
     </div>
 </div>
+
+<script>
+  button = document.getElementById('edit-quantity-button')
+  quantity = document.getElementById('quantity')
+  form = document.getElementById('edit-quantity')
+  button.addEventListener('click', () => {
+    form.classList.remove('hidden')
+    button.classList.add('hidden')
+    quantity.remove()
+  })
+</script>
 
  <!--  <div class="order-status">
          <ul>

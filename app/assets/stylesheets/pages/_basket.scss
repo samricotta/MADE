@@ -3,10 +3,14 @@
 .basket-container {
   margin: auto;
   padding: 1px 10vw;
+  h2 {
+    text-align: left;
+  };
+  p {
+    margin: 0px;
+  }
 }
-.basket-container h2{
-text-align: left;
-}
+
 .content {
   // padding: 0px 10vw;
 }
@@ -33,6 +37,9 @@ text-align: left;
   left: 300px;
 }
 
+// #portions {
+//   margin-right: 10px;
+// }
 .topbar-summary {
   display: flex;
   width: 30%;
@@ -55,6 +62,7 @@ text-align: left;
   margin: 5px;
   height: 100px;
   flex-wrap: wrap;
+  box-shadow:0px 1px rgba(0, 0, 0, 0.2);
 }
 
 .meal-image {
@@ -76,6 +84,7 @@ text-align: left;
   display: flex;
   justify-content: space-around;
   width: 30%;
+  align-items: center;
  }
 
 .meal-info {
@@ -103,10 +112,40 @@ text-align: left;
 }
 
 
+.change-order {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 80px;
+
+}
+#edit-quantity-button  {
+ margin: 0px 10px;
+}
+.icon {
+  i:hover {
+    color: #F15946;
+  }
+}
+
+
 // bottom basket
 
 .basket-summary {
   // padding: 1px 10vw;
+}
+.btn-all {
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  background: #F15946;
+  transition: background 0.3s ease;
+  left: 100px;
+  box-shadow: 1px 1px 1px #ddd;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 4px 15px 4px 15px;
 }
 
 
@@ -143,3 +182,20 @@ text-align: left;
 .amount {
 
 }
+
+#edit-quantity {
+  width: 50px;
+}
+
+.delete{
+  a:hover {
+    text-decoration: none;
+    color: $our-color;
+  }
+}
+.delete a {
+    color: #616668;
+
+}
+
+
