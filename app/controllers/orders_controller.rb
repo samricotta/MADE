@@ -2,7 +2,11 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @users = @order.meal_orders.map(&:meal).map(&:user).uniq!.reject { |user| user.latitude.nil? && user.longitude.nil? }
+    meal_order_prices = @order.meal_orders.map { |meal_order| meal_order.quantity * meal_order.meal.price }
+    total_price = meal_order_prices.sum
+    @order.amount = total_price
+    @order.save
+    @users = @order.meal_orders.map(&:meal).map(&:user).uniq.reject { |user| user.latitude.nil? && user.longitude.nil? }
       # @order = Order.where(user: current_user, status: "pending").first
     @markers = @users.map do |user|
       {

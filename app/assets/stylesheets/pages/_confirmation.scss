@@ -18,6 +18,7 @@
 #title {
  // padding: 40px 100px;
  margin: 10px 50px;
+
 }
 
 #map {
@@ -34,22 +35,30 @@
 }
 .quantity-price {
   display:flex;
+  min-width: 100px;
+  justify-content: space-evenly;
 }
 #quantity {
   margin-right: 10px;
 }
 .meal-content {
-  margin: 15px 0px;
+
 }
 
 .order-container {
   margin-left: 50px;
   min-width: 30%;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.2);
+  // padding: 15px;
 }
 
 .order-id {
   margin-bottom: 5px;
   font-size:30px;
+  background-color: $our-color;
+  color: white;
+  border-radius: 2px;
+  text-align: center;
 }
 .orderconfirmation-summary {
   margin : 5px 0px;
@@ -57,14 +66,20 @@
 }
 
 .chef-details {
-  margin: 10px 0px;
+  margin: 15px;
 }
 
 .total {
   // display: flex;
   align-self: flex-end;
 }
-
+.amount {
+  text-align: right;
+  padding: 15px;
+}
+.meal-order {
+  padding: 15px;
+}
 
 // .amount {
 //   align-self: flex-end;

@@ -5,10 +5,12 @@ Rails.application.routes.draw do
 
   resources :meals do
     resources :meal_reviews, only: :create
-    resources :meal_orders, only: :create
+    resources :meal_orders, only: [:create, :edit, :update]
   end
 
-  resources :orders, only: [:show, :create] do
+  resources :meal_orders, only: :destroy
+
+  resources :orders, only: [:show, :create, :destroy] do
     resources :payments, only: [:new, :create]
   end
 
