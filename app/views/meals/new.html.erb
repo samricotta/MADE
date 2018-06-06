@@ -1,18 +1,18 @@
-<div class="wrapper">
-  <div class="content">
 
-    <div class="description text-center">
-      <h1>Add a meal</h1>
-      <p>Sell your homemade food in one click</p>
-    </div>
+<div class="form">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <div class="form-style">
 
-    <div class="form">
-      <div class="row">
-        <div class="col-xs-6 col-xs-offset-3">
-          <%= render "form", meal: @meal %>
+        <div class="description text-center">
+          <h1>Add a meal</h1>
+          <p>Sell your homemade food in one click</p>
         </div>
+
+        <%= render "form", meal: @meal %>
+        <p>or</p>
+        <%= link_to "Go back", dashboard_path , class: "btn btn-all" %>
       </div>
     </div>
-
   </div>
 </div>

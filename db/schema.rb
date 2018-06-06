@@ -77,9 +77,9 @@ ActiveRecord::Schema.define(version: 2018_06_05_092414) do
 
   create_table "messages", force: :cascade do |t|
     t.text "body"
-    t.boolean "read"
-    t.bigint "user_id"
     t.bigint "conversation_id"
+    t.bigint "user_id"
+    t.boolean "read", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["conversation_id"], name: "index_messages_on_conversation_id"
@@ -128,7 +128,5 @@ ActiveRecord::Schema.define(version: 2018_06_05_092414) do
   add_foreign_key "meal_reviews", "meals"
   add_foreign_key "meal_reviews", "users"
   add_foreign_key "meals", "users"
-  add_foreign_key "messages", "conversations"
-  add_foreign_key "messages", "users"
   add_foreign_key "orders", "users"
 end

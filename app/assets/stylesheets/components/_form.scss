@@ -1,0 +1,43 @@
+.form-style {
+  background: white;
+  padding: 20px 20px;
+  margin: 20px 0;
+  border-radius: 3px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+}
+
+.dietaries {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.dietary {
+  padding: 4px 15px 4px 15px;
+  border-radius: 4px;
+  flex: 0 0 30%;
+  text-align: center;
+  border: 1px solid $our-color;
+  text-decoration: none;
+  color: $our-color;
+  font-weight: bold;
+  font-size: 15px;
+  background: white;
+  box-shadow: 1px 1px 1px #ddd;
+  transition: .3s;
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background: $our-color;
+    text-decoration: none;
+  }
+
+}
+
+.active-dietary {
+    cursor: pointer;
+    color: white;
+    background: $our-color;
+    text-decoration: none;
+  }
