@@ -1,0 +1,33 @@
+.footer {
+  background-color: transparent;
+  height: 100px;
+  margin-top: 40px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+  padding: 16px 0px;
+  padding-top: 16px;
+  padding-right: 0px;
+  padding-bottom: 16px;
+  padding-left: 0px;
+  a {
+    color: #616668;
+    font-size: 14px;
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+      color: $our-color;
+    }
+  }
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 16px;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
