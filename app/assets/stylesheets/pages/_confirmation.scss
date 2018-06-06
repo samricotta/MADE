@@ -1,0 +1,76 @@
+// containers - wrappers
+
+.confirmation-wrapper {
+  display: flex;
+  justify-content: space-around;
+  padding: 42px 50px;
+  margin: 25px 50px;
+  background-color: white;
+  align-items: center;
+  // flex-wrap: wrap;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+
+}
+.confirmation-container {
+  margin: auto;
+}
+
+#title {
+ // padding: 40px 100px;
+ margin: 10px 50px;
+}
+
+#map {
+  flex: 0 0 400px;
+
+}
+// confiramtion content
+
+.meal-description {
+  display: flex;
+  justify-content:space-between;
+  text-align: right;
+
+}
+.quantity-price {
+  display:flex;
+}
+#quantity {
+  margin-right: 10px;
+}
+.meal-content {
+  margin: 15px 0px;
+}
+
+.order-container {
+  margin-left: 50px;
+  min-width: 30%;
+}
+
+.order-id {
+  margin-bottom: 5px;
+  font-size:30px;
+}
+.orderconfirmation-summary {
+  margin : 5px 0px;
+
+}
+
+.chef-details {
+  margin: 10px 0px;
+}
+
+.total {
+  // display: flex;
+  align-self: flex-end;
+}
+
+
+// .amount {
+//   align-self: flex-end;
+// }
+// .total-amount {
+//   align-items: bottom;
+// }
+
+// #DADEDE
