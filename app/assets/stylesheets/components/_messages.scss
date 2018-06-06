@@ -1,29 +1,48 @@
+.conversation-box {
+  display: flex;
+  align-items: center;
+}
+
+
+.conversations-container {
+  height: 70vh;
+  overflow: scroll;
+}
+
+.conversation-box.active {
+  background-color: #00000005;
+  border-radius: 5px;
+}
+
+
 .item-message-blue {
-    width: 50%;
+    width: 85%;
     text-align: right;
     margin: 0 auto;
-    background-color: #31DDEA;
+    background-color: #f05a4b;
     color: white;
-    font-size: 22px;
+    font-size: 16px;
     margin-top: 18px;
     border-radius: 14px;
-    padding: 28px;
+    padding: 12px;
 }
 
 
 .item-message-green {
+  width: 85%;
   text-align: left;
-  background-color: #2DDBA3;
+  background-color: #90D2C9;
   color: white;
-  font-size: 22px;
+  font-size: 16px;
   margin-top: 18px;
   border-radius: 14px;
-  padding: 28px;
+  padding: 12px;
 }
 
 .text-messages {
-  min-height: 100vh;
+  height: 60vh;
   background-color: white;
+  overflow: scroll;
 }
 
 .reply {
@@ -32,13 +51,22 @@
 }
 
 .item-message {
-  font-size: 35px;
+  font-size: 24px;
 }
 
 .header-message {
   color: #d7e3e4;
+  padding-bottom: 11px;
 }
 
 .message-reply{
   font-size: 31px;
+}
+
+
+
+.message-form-control {
+  margin-left: 44px;
+  width: 374px;
+  height: 46px;
 }
