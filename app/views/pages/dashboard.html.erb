@@ -5,135 +5,103 @@
  <%# end %>
   <!-- Nav tabs -->
 <div class="wrap">
-    <ul class="nav nav-underline nav-underline-center" role="tablist" id="container-tabs">
-      <li role="presentation" class="tab-underline active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-      <li role="presentation"><a class="tab-underline" href="#mealsihaveordered" aria-controls="mealsihaveordered" role="tab" data-toggle="tab">Meals I have ordered</a></li>
-      <li role="presentation"><a class="tab-underline" href="#cookedbyme" aria-controls="cookedbyme" role="tab" data-toggle="tab">Cooked by me</a></li>
-      <li role="presentation"><a class="tab-underline" href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-    </ul>
-
-
-
-
-
-
-
-
-
-  <!-- Tab panes -->
-  <!-- TAB #1 -->
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">
-      <div class="container-dashboard">
-        <div class="flex">
-          <div class="flex-container-left">
-            <h1> Hi <%= current_user.first_name %> <%=current_user.last_name%> !</h1>
-          </div>
-          <div class="flex-container-right">
-            <% if current_user.photo? %>
-              <% photo = cl_image_path current_user.photo %>
-            <% else %>
-              <% photo = "https://images.unsplash.com/photo-1519238397241-5bf4804bd0db?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=68edffd21eecaf32465725da363ebf4a&auto=format&fit=crop&w=1510&q=80" %>
-            <% end %>
-            <div class="img-profile" style="background-image: url(<%= photo %>);"></div>
-          </div>
-        </div>
-        <hr class="dashboard-line">
-         <p><%= current_user.first_name %></p>
-         <p><%= current_user.last_name %></p>
-      </div>
-    </div>
-    <!-- TAB #2 -->
-    <div role="tabpanel" class="tab-pane" id="mealsihaveordered">
-    <div role="tabpanel" class="tab-pane" id="mealsihaveordered">
-
-      <% current_user.orders.each do |order| %>
-       <%# if order.status == "paid"%>
-        <h3>Order <%= order.id%></h3>
-        <% order.meals.each do |meal|%>
-          <p><%= meal.name %></p>
-          <p><%= meal.description %></p>
-          <%= link_to "show", order_path(order)  %>
-        <% end %>
-        <%# end %>
+  <hr>
+  <div class="container-dashboard">
+    <div class="flex-container-left">
+      <% if current_user.photo? %>
+        <% photo = cl_image_path current_user.photo %>
+      <% else %>
+        <% photo = "https://images.unsplash.com/photo-1519238397241-5bf4804bd0db?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=68edffd21eecaf32465725da363ebf4a&auto=format&fit=crop&w=1510&q=80" %>
       <% end %>
-    </div>
+      <div class="img-profile" style="background-image: url(<%= photo %>);"></div>
 
-
-    <div role="tabpanel" class="tab-pane" id="cookedbyme">
-  <ul>
-        <% current_user.meals.each do |meal| %>
-          <li>
-            <p><%= meal.name %></p>
-            <p><%= meal.description %></p>
-            <p><%= meal.portions_left %></p>
-            <%= link_to "Edit this meal", edit_meal_path(meal) %>
-            <%= link_to "Delete this meal", meal_path(meal) , method: :delete, data: { confirm: "Are you sure you want to delete this meal?"} %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-
-    <div role="tabpanel" class="tab-pane" id="messages">
-      <div class="ui segment">
-       <h3>Mailbox</h3>
-       <div class="ui list">
-        <div class="item">
-         <% @conversations.each do |conversation| %>
-         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-          <% if conversation.sender_id == current_user.id %>
-            <% recipient = User.find(conversation.recipient_id) %>
-          <% else %>
-            <% recipient = User.find(conversation.sender_id) %>
+      <hr>
+      <div class="profile">
+        <h3>Your details <small><i class="fas fa-user"></i></small></h3>
+        <p><strong>First name</strong> <%=current_user.first_name%></p>
+        <p><strong>Last name</strong> <%=current_user.last_name%></p>
+        <p><strong>Email</strong> <%= current_user.email%></p>
+        <p><strong>Address</strong> <%= current_user.address %></p>
+        <hr>
+        <h3>Your rating <!-- <small><i class="far fa-heart"></i></small> --></h3>
+        <% number_left = 5 - current_user.average_rating %>
+        <p><strong>Average rating</strong> <% current_user.average_rating do %>
+           <i class="fas fa-heart"></i>
           <% end %>
-          <%= link_to recipient.first_name,   conversation_messages_path(conversation)%>
-         <% end %>
-        <% end %>
-        </div>
-       </div>
+          <% number_left.times do %>
+            <i class="far fa-heart"></i>
+          <% end %>
+        </p>
       </div>
     </div>
+    <div class="flex-container-right">
+      <h1 class="text-center">Hi <%= current_user.first_name %>! 👋</h1>
 
+      <div>
 
-  </div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-underline nav-underline-center" role="tablist">
+          <li role="presentation" class="nav-item active"><a class="tab-underline" href="#myorders" aria-controls="myorders" role="tab" data-toggle="tab">My orders</a></li>
+          <li role="presentation" class="nav-item"><a class="tab-underline" href="#mealsivemade" aria-controls="mealsivemade" role="tab" data-toggle="tab">Meals i've made</a></li>
+          <li role="presentation" class="nav-item"><a class="tab-underline" href="#msgs" aria-controls="msgs" role="tab" data-toggle="tab">Messages</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="myorders">
+            <%= render "my_orders" %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="mealsivemade">
+            <%= render "my_meals" %>
+          </div>
+          <div role="tabpanel" class="tab-pane" id="msgs">
+            messages later
+          </div>
+        </div>
+
+      </div>
+
   </div>
 </div>
 
 
 <script>
-  let arrayChild = [];
-  const navUnderline = Array.from(document.querySelector(".nav-underline").childNodes);
-  navUnderline.forEach((child) => {
-    if (navUnderline.indexOf(child) % 2 != 0) {
-      arrayChild.push(child)
-    }
-  })
-  const tabPane = Array.from(document.querySelectorAll(".tab-pane"));
-  arrayChild.forEach((li) => {
-    li.addEventListener("click", (e) => {
-      console.log(e.currentTarget)
-      arrayChild.forEach((list) => {
-        // if (list.classList.contains("tab-underline")) {
-        //   list.classList.remove("tab-underline")
-        // }
-        if (list.classList.contains("active")) {
-          list.classList.remove("active")
-          if (tabPane[arrayChild.indexOf(list)].classList.contains("active")) {
-            tabPane[arrayChild.indexOf(list)].classList.remove("active")
-          }
-        }
-      })
-      e.currentTarget.classList.add("tab-underline");
-      e.currentTarget.classList.add("active");
-      tabPane[arrayChild.indexOf(e.currentTarget)].classList.add("active")
-    })
-  })
-// var btnContainer = document.getElementById("container-tabs");
-// var btns = btnContainer.getElementsByClassName("tab-underline");
-// var btns.attachEvent('onclick', function (event) {
-// var btns.classList.remove("active")
-// var btns.add("active")
-// });
-// }
+
+
+  // let arrayChild = [];
+  // const navUnderline = Array.from(document.querySelector(".nav-underline").childNodes);
+  // navUnderline.forEach((child) => {
+  //   if (navUnderline.indexOf(child) % 2 != 0) {
+  //     arrayChild.push(child)
+  //   }
+  // })
+  // const tabPane = Array.from(document.querySelectorAll(".tab-pane"));
+  // arrayChild.forEach((li) => {
+  //   li.addEventListener("click", (e) => {
+  //     console.log(e.currentTarget)
+  //     arrayChild.forEach((list) => {
+  //       // if ((list.classList.contains("tab-underline")) && (arrayChild.indexOf(list) != 0)) {
+  //       //   list.classList.remove("tab-underline")
+  //       // }
+  //       if (list.classList.contains("tab-underline")) {
+  //         list.classList.remove("tab-underline")
+  //       }
+  //       if (arrayChild.indexOf(list != 0)) {
+  //         arrayChild[0].childNodes[0].classList.add('tab-underline')
+  //       }
+  //       if (list.classList.contains("active")) {
+  //         list.classList.remove("active")
+  //         // list.classList.remove("tab-underline")
+  //         if (tabPane[arrayChild.indexOf(list)].classList.contains("active")) {
+  //           tabPane[arrayChild.indexOf(list)].classList.remove("active")
+  //         }
+  //       }
+  //     })
+  //     e.currentTarget.classList.add("tab-underline");
+  //     e.currentTarget.classList.add("active");
+  //     tabPane[arrayChild.indexOf(e.currentTarget)].classList.add("active")
+  //   })
+  // })
+
 
 </script>

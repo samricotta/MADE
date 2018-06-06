@@ -1,0 +1,31 @@
+<% current_user.orders.each do |order| %>
+  <div class="order-myorders">
+    <%# if order.status == "paid"%>
+    <div class="order-header">
+      <div class="name-left">
+      <h2> <%= link_to "Order #{order.id}", order_path(order) %></h2>
+      </div>
+      <div class="price-right">
+        <h2><%= humanized_money_with_symbol(order.amount) %></h2>
+      </div>
+
+    </div>
+    <% order.meals.each do |meal|%>
+      <div class="meal-details">
+        <div class="meal-info">
+          <h3><%= meal.name %></h3>
+          <p><%= meal.description %></p>
+          <%= link_to "Show meal", meal_path(meal), class: "btn-reverse" %>
+        </div>
+        <% if meal.photo? %>
+          <% photo = cl_image_path meal.photo %>
+        <% else %>
+          <% photo = "https://images.unsplash.com/photo-1473093226795-af9932fe5856?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3bf6fd384a4045ad91b8f08279f02ab8&auto=format&fit=crop&w=1370&q=80" %>
+        <% end %>
+        <div class="card-dashboard" style="background-image: url(<%= photo %>);"></div>
+      </div>
+      <hr>
+    <% end %>
+  </div>
+<% end %>
+
