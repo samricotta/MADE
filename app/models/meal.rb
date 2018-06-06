@@ -8,6 +8,14 @@ class Meal < ApplicationRecord
   has_many :dietaries, through: :meal_dietaries
   mount_uploader :photo, PhotoUploader
 
+  def ordered_and_not_reviewed?(user)
+    # is it order?
+    ordered = self.orders.select { |order| order.status == "paid" }.map(&:user_id).include?(user.id)
+    # is it reviewed already
+    reviewed = self.meal_reviews.map(&:user_id).include?(user.id)
+    return ordered && !reviewed
+  end
+
   def self.filter(args)
     dietary = args[:dietary]
     cuisine = args[:cuisine]

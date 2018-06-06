@@ -1,67 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>Oops! Page not found</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <style>
   .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
+    background-image: url("https://images.unsplash.com/photo-1502124225665-6282a0146f6a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=3310f9097eebc99387231721a25a5d8d&auto=format&fit=crop&w=2250&q=80");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .message404 {
+    position: absolute;
+    top: 20px;
+    right: 70px;
+    text-align: right;
+    font-size: 20px;
+    font-family: "Montserrat", "Helvetica", "sans-serif";
+    color: rgb(96, 96, 96);
+  }
+
+  body {
     margin: 0;
   }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+  .btn-all {
+  border-radius: 4px;
+  color: white;
+  font-weight: bold;
+  background: #F15946;
+  transition: background 0.3s ease;
+  left: 100px;
+  box-shadow: 1px 1px 1px #ddd;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 4px 15px 4px 15px;
+}
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+.btn-all:hover {
+  border: 1px solid $our-color;
+  text-decoration: none;
+  color: #F15946;
+  background: white;
+}
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
   </style>
 </head>
 
-<body class="rails-default-error-page">
+<body>
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+  <div class="rails-default-error-page">
+    <div class="message404">
+      <p>Oops!</p>
+      <p>The page you're looking for does not exist.</p>
+      <p>Go back to the home <br> page and order some food!</p>
+      <a href="/" class="btn-all">Back to home page</a>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+
 </body>
 </html>
