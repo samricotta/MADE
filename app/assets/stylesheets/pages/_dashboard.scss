@@ -1,5 +1,6 @@
 .wrap{
   background-color: white;
+  padding-top: 20px;
 }
 
 .row-dash {
@@ -8,20 +9,61 @@
 }
 
 .container-dashboard{
-margin-right: 350px;
-margin-left: 350px;
+margin-right: 100px;
+margin-left: 100px;
 background-color: white;
-padding: 30px;
-box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-}
-
-.flex {
-  display:flex;
-  justify-content: space-between;
+// box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+display:flex;
+// justify-content: space-between;
+padding: 20px7
 }
 
 .dashboard-line {
   border: 1px solid $our-color;
+}
+
+.dashboard-name {
+  // box-shadow: inset 0px -10px $our-color;
+}
+
+.nav-underline-center {
+  justify-content: center;
+  width: 100%;
+}
+
+.nav-underline {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .tab-underline {
+    color: gray;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 5px;
+    margin: 10px 20px;
+    opacity: .4;
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 4px solid transparent;
+  }
+
+  .tab-underline.active-red {
+    opacity: 1;
+    border-bottom: 4px solid $red;
+  }
+
+  .active .tab-underline {
+    opacity: 1;
+    border-bottom: 4px solid $our-color;
+    color: $our-color;
+  }
+
+}
+
+
+.nav > li > a:hover, .nav > li > a:focus {
+  background-color: transparent;
 }
 
 // .nav-tabs a {
@@ -36,52 +78,150 @@ box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
 //   border-bottom: 2px solid blue
 
 // }
-.nav-underline-center {
-  justify-content: center;
-  width: 100%;
+// .nav-underline-center {
+//   justify-content: center;
+//   width: 100%;
+// }
+
+// .nav-underline {
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+// }
+
+//   .tab-underline {
+//     font-weight: 700;
+//     font-size: 18px;
+//     padding: 5px;
+//     margin: 10px 20px;
+//     opacity: .4;
+//     cursor: pointer;
+//     text-decoration: none;
+//     border-bottom: 4px solid transparent;
+//     color: #484848;
+//   }
+
+
+// .tab-underline:hover {
+//   color: $our-color;
+// }
+
+//   .tab-underline.active {
+//     opacity: 1;
+//     border-bottom: 4px solid $our-color;
+
+// }
+
+.img-profile {
+  height: 275px;
+  width: 275px;
+  background-size: cover;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+
 }
 
-.nav-underline {
+//  .nav > li > a:hover, .nav > li > a:focus {
+//   background-color: transparent;
+//   opacity: 1;
+//  }
+
+// .tab-underline a {
+//   color: $our-color;
+// }
+
+.flex-container-left {
+  position: sticky !important;
+  top: 0 !important;
+  padding-top: 20px;
+  margin-right: 50px;
+}
+
+.flex-container-right {
+  flex: 1 0 auto;
+  padding-top: 50px;
+}
+.fa-user, .fa-heart, .fa-envelope {
+  margin-left: 10px;
+}
+
+.profile {
+  line-height: 1.8;
+}
+
+.order-myorders {
+  border: 1px solid #e0e0e0;
+  margin-top: 20px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+  padding-bottom: 10px;
+}
+
+.card-dashboard {
+  height: 193px;
+  background-size: cover;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding-top: 20px;
+  flex: 0 0 200px;
   position: relative;
+}
+
+.meal-details {
   display: flex;
+  padding: 10px;
+}
+
+.my-meal-details {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.order-header {
+  background-color: $our-color;
+  opacity: 0.8;
+  color: white;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  position: relative;
+}
+
+.order-header a{
+  text-decoration: none;
+  color: white;
+}
+
+.order-header h2 {
+  margin: 0px;
+}
+
+.meal-info {
+  flex: 0 1 auto;
+  line-height: 1.8;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+
+.portions_left {
+  background-color: white;
+  padding: 10px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  color: #F15946;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-  .tab-underline {
-    font-weight: 700;
-    font-size: 18px;
-    padding: 5px;
-    margin: 10px 20px;
-    opacity: .4;
-    cursor: pointer;
-    text-decoration: none;
-    border-bottom: 4px solid transparent;
-    color: #484848;
-  }
-
-
-.tab-underline:hover {
-color: $our-color;
-}
-
-  .tab-underline.active {
-    opacity: 1;
-    border-bottom: 4px solid $our-color;
-
-}
-
-.img-profile {
-  height: 150px;
-  width: 150px;
-  border-radius: 80px;
-  background-size: cover;
-}
-
- .nav > li > a:hover, .nav > li > a:focus {
-  background-color: transparent;
-  opacity: 1;
- }
-
-.tab-underline a {
+.fa-user {
   color: $our-color;
 }

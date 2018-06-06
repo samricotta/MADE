@@ -1,64 +1,64 @@
 
-<div class="container">
-  <div class="row">
-    <!-- All the converstions I have -->
-    <div class="col-xs-6">
-      <div class="conversations-container">
-        <% @conversations.each do |conversation| %>
-          <%= link_to dashboard_path(messages: true, selected_conversation: conversation.id), class: "conversation-box #{'active' if conversation == @conversation}" do %>
 
-            <% if current_user == conversation.sender %>
-              <% user = conversation.recipient %>
-            <% else %>
-              <% user = conversation.sender %>
-            <% end %>
+<div class="row">
+  <!-- All the converstions I have -->
+  <div class="col-xs-6">
+    <div class="conversations-container">
+      <% @conversations.each do |conversation| %>
+        <%= link_to dashboard_path(messages: true, selected_conversation: conversation.id), class: "conversation-box #{'active' if conversation == @conversation}" do %>
 
-            <% if user.photo? %>
-              <% photo = cl_image_path user.photo %>
-            <% else %>
-              <% photo = image_path "favicon.ico" %>
-            <% end %>
+          <% if current_user == conversation.sender %>
+            <% user = conversation.recipient %>
+          <% else %>
+            <% user = conversation.sender %>
+          <% end %>
 
-              <div class="message-avatar" style="background-image: url(<%= photo %>)"></div>
-              <h4><%= user.first_name %> <%= user.last_name %></h4>
-            <% end %>
-        <% end %>
-      </div>
+          <% if user.photo? %>
+            <% photo = cl_image_path user.photo %>
+          <% else %>
+            <% photo = image_path "favicon.ico" %>
+          <% end %>
+
+            <div class="message-avatar" style="background-image: url(<%= photo %>)"></div>
+            <h4><%= user.first_name %> <%= user.last_name %></h4>
+          <% end %>
+      <% end %>
     </div>
+  </div>
 
-    <!-- Messaging window -->
-    <div class="col-xs-6">
-      <div class="text-messages">
-        <div class="ui segment">
-         <% @messages.each do |message| %>
-          <% if message.body %>
-           <% user = User.find(message.user_id) %>
-           <div class="<%= message.user_id == current_user.id ? 'item-message-blue' : 'item-message-green'%>">
-            <div class="content">
-             <div class="header-message"><strong><%= user.first_name %></strong>     <%= message.message_time %></div>
-              <div class="list">
-               <div class="item-message">
-                <i class="right triangle icon"></i>
-                 <%= message.body %>
-              </div>
+  <!-- Messaging window -->
+  <div class="col-xs-6">
+    <div class="text-messages">
+      <div class="ui segment">
+       <% @messages.each do |message| %>
+        <% if message.body %>
+         <% user = User.find(message.user_id) %>
+         <div class="<%= message.user_id == current_user.id ? 'item-message-blue' : 'item-message-green'%>">
+          <div class="content">
+           <div class="header-message"><strong><%= user.first_name %></strong>     <%= message.message_time %></div>
+            <div class="list">
+             <div class="item-message">
+              <i class="right triangle icon"></i>
+               <%= message.body %>
             </div>
-           </div>
+          </div>
          </div>
-         <% end %>
-        <% end %>
-        </div>
-      </div>
-      <div class="form-send">
-      <%= form_for [@conversation, @message], html: {class: "ui reply form form-inline"} do |f| %>
-       <!-- <div class="field"> -->
-         <%= f.text_area :body, class: "message-form-control" %>
-       <!-- </div> -->
-       <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-       <!-- <div class="message-reply"> -->
-         <%= f.submit "Send", class: "ui blue labeled submit icon button btn-all" %>
-       <!-- </div> -->
+       </div>
+       <% end %>
       <% end %>
       </div>
     </div>
+    <div class="form-send">
+    <%= form_for [@conversation, @message], html: {class: "ui reply form form-inline"} do |f| %>
+     <!-- <div class="field"> -->
+       <%= f.text_area :body, class: "message-form-control" %>
+     <!-- </div> -->
+     <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+     <!-- <div class="message-reply"> -->
+       <%= f.submit "Send", class: "ui blue labeled submit icon button btn-all" %>
+     <!-- </div> -->
+    <% end %>
+    </div>
   </div>
 </div>
+
