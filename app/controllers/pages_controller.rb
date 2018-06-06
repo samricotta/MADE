@@ -10,14 +10,18 @@ class PagesController < ApplicationController
   def dashboard
     @meals = current_user.meals
     @conversations = Conversation.where(sender_id: current_user.id).or(Conversation.where(recipient_id: current_user.id))
-    if params[:selected_conversation]
-      @conversation = Conversation.find(params[:selected_conversation])
-      @messages = @conversation.messages
-    else
-      @conversation = @conversations.first
-      @messages = @conversation.messages
+    if @conversations.any?
+
+      if params[:selected_conversation]
+        @conversation = Conversation.find(params[:selected_conversation])
+        @messages = @conversation.messages
+      else
+        @conversation = @conversations.first
+        @messages = @conversation.messages
+      end
+      @message = Message.new
+
     end
-    @message = Message.new
   end
 
 end
