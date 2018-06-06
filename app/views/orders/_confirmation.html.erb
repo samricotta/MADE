@@ -5,10 +5,10 @@
     <div id="map" style="width: 40%; height: 400px;" data-markers= " <%= @markers.to_json %> ">
     </div>
     <div class="order-container">
+      <div class="order-id">
+        <p> Order n. <%= @order.id %></p>
+      </div>
       <div class="meal-order">
-        <div class="order-id">
-          <p> Order n. <%= @order.id %></p>
-        </div>
         <div class="orderconfirmation-summary">
           <p>You have order <%= @order.total_items %> meals</p>
         </div>
@@ -27,16 +27,16 @@
       <div class="chef-details">
         <% @order.meal_orders.map(&:meal).map(&:user).uniq!.each do |user| %>
          <!--  <p><%= user.first_name %> <%= user.last_name %></p> -->
-         <p>Find <%= user.first_name %><%= user.last_name %> at <%= user.address %></p>
+         <p>Find <%= user.first_name %> <%= user.last_name %> at <%= user.address %></p>
         <% end %>
       </div>
-    </div>
-    <div class="total">
-      <article class="total-amount">
-        <label class="amount">
-          <span>Total amount: <%= humanized_money_with_symbol(@order.amount) %></span>
-        </label>
-      </article>
+      <div class="total">
+        <article class="total-amount text-right">
+          <label class="amount">
+            <span>Total: <%= humanized_money_with_symbol(@order.amount) %></span>
+          </label>
+        </article>
+      </div>
     </div>
   </div>
 </div>
