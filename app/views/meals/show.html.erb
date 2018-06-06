@@ -108,8 +108,8 @@
             <h3><%= @meal.user.first_name %></h3>
             <p><%= @meal.user.address %></p>
             <hr id="hr-line">
-            <p>Portions left: <%= @meal.price_cents %></p>
-            <p>£ <%= @meal.portions_left %></p>
+            <p>Portions left: <%= @meal.portions_left %></p>
+            <p>£ <%= @meal.price_cents %></p>
             <% if user_signed_in? %>
               <%= render "order_form"%>
             <% else %>
