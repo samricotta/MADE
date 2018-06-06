@@ -5,15 +5,20 @@
     </div>
     <div class="order-container">
       <div class="meal-order">
-        <div class="meal-id">
+        <div class="order-id">
           <p> Order n. <%= @order.id %></p>
+        </div>
+        <div class="orderconfirmation-summary">
+          <p>You have order <%= @order.total_items %> meals</p>
         </div>
         <% @order.meal_orders.each do |meal_order| %>
         <div class="meal-content">
           <div class="meal-description">
-            <p> Quantity: <%= meal_order.quantity %></p>
-            <p> Price: £<%= meal_order.meal.price %></p>
-            <p> Meal : <%= meal_order.meal.name %></p>
+            <p> <%= meal_order.meal.name %></p>
+            <div class="quantity-price">
+              <p id="quantity"> <%= meal_order.quantity %></p>
+              <p> £<%= meal_order.meal.price %></p>
+            </div>
           </div>
         </div>
         <% end %>
@@ -24,20 +29,12 @@
          <p>Find <%= user.first_name %><%= user.last_name %> at <%= user.address %></p>
         <% end %>
       </div>
-      <!-- <div class="total">
-        <article>
-          <label class="amount">
-            <span>Total amount: <%= humanized_money_with_symbol(@order.amount) %></span>
-          </label>
-        </article>
-      </div> -->
     </div>
     <div class="total">
       <article class="total-amount">
         <label class="amount">
           <span>Total amount: <%= humanized_money_with_symbol(@order.amount) %></span>
         </label>
-        <p>You have order <%= @order.total_items %> meals</p>
       </article>
     </div>
   </div>
