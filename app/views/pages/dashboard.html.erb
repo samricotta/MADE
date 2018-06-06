@@ -6,10 +6,10 @@
   <!-- Nav tabs -->
 <div class="wrap">
     <ul class="nav nav-underline nav-underline-center" role="tablist" id="container-tabs">
-      <li role="presentation" class="tab-underline active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-      <li role="presentation"><a class="tab-underline" href="#mealsihaveordered" aria-controls="mealsihaveordered" role="tab" data-toggle="tab">Meals I have ordered</a></li>
-      <li role="presentation"><a class="tab-underline" href="#cookedbyme" aria-controls="cookedbyme" role="tab" data-toggle="tab">Cooked by me</a></li>
-      <li role="presentation"><a class="tab-underline" href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+      <li role="presentation" class="tab-underline <%= 'active' if params[:meals] %>"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+      <li role="presentation" class="tab-underline <%= 'active' if params[:orders] %>"><a class= href="#mealsihaveordered" aria-controls="mealsihaveordered" role="tab" data-toggle="tab">Meals I have ordered</a></li>
+      <li role="presentation" class="tab-underline <%= 'active' if params[:my_items] %>"><a href="#cookedbyme" aria-controls="cookedbyme" role="tab" data-toggle="tab">Cooked by me</a></li>
+      <li role="presentation" class="tab-underline <%= 'active' if params[:messages] %>"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
     </ul>
 
 
@@ -23,7 +23,7 @@
   <!-- Tab panes -->
   <!-- TAB #1 -->
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">
+    <div role="tabpanel" class="tab-pane <%= 'active' if params[:meals] %>" id="home">
       <div class="container-dashboard">
         <div class="flex">
           <div class="flex-container-left">
@@ -44,8 +44,7 @@
       </div>
     </div>
     <!-- TAB #2 -->
-    <div role="tabpanel" class="tab-pane" id="mealsihaveordered">
-    <div role="tabpanel" class="tab-pane" id="mealsihaveordered">
+    <div role="tabpanel" class="tab-pane <%= 'active' if params[:orders] %>" id="mealsihaveordered">
 
       <% current_user.orders.each do |order| %>
        <%# if order.status == "paid"%>
@@ -60,8 +59,8 @@
     </div>
 
 
-    <div role="tabpanel" class="tab-pane" id="cookedbyme">
-  <ul>
+    <div role="tabpanel" class="tab-pane <%= 'active' if params[:my_items] %>" id="cookedbyme">
+      <ul>
         <% current_user.meals.each do |meal| %>
           <li>
             <p><%= meal.name %></p>
@@ -74,24 +73,8 @@
       </ul>
     </div>
 
-    <div role="tabpanel" class="tab-pane" id="messages">
-      <div class="ui segment">
-       <h3>Mailbox</h3>
-       <div class="ui list">
-        <div class="item">
-         <% @conversations.each do |conversation| %>
-         <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-          <% if conversation.sender_id == current_user.id %>
-            <% recipient = User.find(conversation.recipient_id) %>
-          <% else %>
-            <% recipient = User.find(conversation.sender_id) %>
-          <% end %>
-          <%= link_to recipient.first_name,   conversation_messages_path(conversation)%>
-         <% end %>
-        <% end %>
-        </div>
-       </div>
-      </div>
+    <div role="tabpanel" class="tab-pane <%= 'active' if params[:messages] %>" id="messages">
+      <%= render "messages_page" %>
     </div>
 
 
