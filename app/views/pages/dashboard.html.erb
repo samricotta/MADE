@@ -74,7 +74,9 @@
     </div>
 
     <div role="tabpanel" class="tab-pane <%= 'active' if params[:messages] %>" id="messages">
-      <%= render "messages_page" %>
+      <% if @conversations.any? %>
+        <%= render "messages_page" %>
+      <% end %>
     </div>
 
 
