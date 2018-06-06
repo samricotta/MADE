@@ -25,7 +25,7 @@
         <% end %>
       </div>
       <div class="chef-details">
-        <% @order.meal_orders.map(&:meal).map(&:user).uniq!.each do |user| %>
+        <% @order.meal_orders.map(&:meal).map(&:user).uniq.each do |user| %>
          <!--  <p><%= user.first_name %> <%= user.last_name %></p> -->
          <p>Find <%= user.first_name %> <%= user.last_name %> at <%= user.address %></p>
         <% end %>

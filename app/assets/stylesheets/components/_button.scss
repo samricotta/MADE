@@ -36,12 +36,13 @@
   background: white;
   transition: background 0.3s ease;
   left: 100px;
-  box-shadow: 1px 1px 1px #ddd;
+  // box-shadow: 1px 1px 1px #ddd;
   text-align: center;
   text-decoration: none;
   font-size: 15px;
   padding: 4px 15px 4px 15px;
   border: 1px solid $our-color;
+  font-weight: lighter;
 }
 
 .btn-reverse:hover {
