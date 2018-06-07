@@ -34,9 +34,13 @@
           <div class="meal-image">
             <% if meal_order.meal.photo? %>
               <div class="photy" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path meal_order.meal.photo, quality: "auto" %>');">
+                <%= link_to "", meal_path(meal_order.meal) , class: "piclink"%>
               </div>
             <% else %>
-              <%= image_tag("banner.jpg", width: 180, height: 90) %>
+              <div class="photy">
+                <%= image_tag("banner.jpg", width: 180, height: 90) %>
+                <%= link_to "", meal_path(meal_order.meal) , class: "piclink"%>
+              </div>
             <% end %>
           </div>
           <% if meal_order.meal.name.present? %>
