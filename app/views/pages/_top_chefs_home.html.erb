@@ -23,10 +23,12 @@
   </div>
 
   <div class="cards-home">
-    <% photo2 = "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9647d95a500b5e222258fb03ed086ed1&auto=format&fit=crop&w=700&q=80" %>
     <% four_meals.each do |meal| %>
-
-
+    <% if meal.photo? %>
+      <% photo2 = cl_image_path four_meals.photo %>
+    <% else %>
+      <% photo2 = "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=9647d95a500b5e222258fb03ed086ed1&auto=format&fit=crop&w=700&q=80" %>
+    <% end %>
       <div class= "card" style= "background-image: url(<%= photo2 %>)">
         <%= link_to "", meal_path(meal), class: "card-link" %>
           <div class="description">
