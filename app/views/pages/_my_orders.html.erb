@@ -14,6 +14,7 @@
           <h3><%= meal.name %></h3>
           <p><%= meal.description %></p>
           <%= link_to "Show meal", meal_path(meal), class: "btn-reverse" %>
+          <%= link_to "Leave review", meal_path(meal), class: "btn-reverse"%>
         </div>
         <% if meal.photo? %>
           <% photo = cl_image_path meal.photo %>
