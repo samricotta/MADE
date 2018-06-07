@@ -72,8 +72,9 @@
 .photy {
   width: 180px;
   height: 90px;
-  box-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 3px black;
   background-size: cover;
+  position: relative;
 }
 
 
@@ -92,13 +93,13 @@
   text-align: left;
 }
 
-.price {
-  width: 30%;
+// .price {
+//   width: 30%;
 
-}
-.quantity {
-  width: 20%;
-}
+// }
+// .quantity {
+//   width: 20%;
+// }
 .name {
   // width: 20%;
   flex-grow: 1;
@@ -197,5 +198,15 @@
     color: #616668;
 
 }
+
+.piclink {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
+  height: 100%;
+  width: 100%;
+}
+
 
 
