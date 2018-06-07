@@ -1,6 +1,5 @@
-<% current_user.orders.each do |order| %>
+<% current_user.orders.where(status: "paid").each do |order| %>
   <div class="order-myorders">
-    <%# if order.status == "paid"%>
     <div class="order-header">
       <div class="name-left">
       <h2> <%= link_to "Order #{order.id}", order_path(order) %></h2>
@@ -8,7 +7,6 @@
       <div class="price-right">
         <h2><%= humanized_money_with_symbol(order.amount) %></h2>
       </div>
-
     </div>
     <% order.meals.each do |meal|%>
       <div class="meal-details">

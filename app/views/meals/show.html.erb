@@ -19,8 +19,8 @@
             <p><%= @meal.ingredients %></p>
              <hr>
              <% if current_user %>
-              <h3>About <%=@meal.user.first_name %></h3>
-                <%= link_to "send message", conversations_path(sender_id: current_user.id, recipient_id: @meal.user.id), method: "post", class: "btn-all" %>
+              <a> </a>
+                <%= link_to "Ask #{@meal.user.first_name} about this meal!", conversations_path(sender_id: current_user.id, recipient_id: @meal.user.id), method: "post", class: "btn-all" %>
             <% end %>
              <hr>
             <h3>More from <%= @meal.user.first_name %></h3>
