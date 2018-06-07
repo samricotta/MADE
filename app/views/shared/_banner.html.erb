@@ -4,11 +4,16 @@
     <p><span id="banner-typed-text"></span></p>
     <%= form_tag meals_path, :method => 'get' do %>
       <%= text_field_tag :location, params[:location], placeholder: "Search by location", class: "search-input text-center nav-input" %>
-      <%= button_tag(type: "submit", class: "btn-all") do %>
+      <%= button_tag(type: "submit", class: "btn-home") do %>
         <i class="fas fa-search"></i>
       <% end %>
     <% end %>
   </div>
 </div>
+
+
+
+
+
 
 

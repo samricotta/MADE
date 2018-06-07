@@ -1,15 +1,17 @@
-.btn-all {
-  border-radius: 4px;
-  color: white;
-  font-weight: bold;
-  background: $our-color;
-  transition: background 0.3s ease;
-  left: 100px;
-  box-shadow: 1px 1px 1px #ddd;
-  text-align: center;
-  text-decoration: none;
-  font-size: 15px;
-  padding: 4px 15px 4px 15px;
+.btn-home {
+  border-radius: 4px 4px 4px 4px;
+    color: white;
+    font-weight: bold;
+    background: #F15946;
+    transition: background 0.3s ease;
+    box-shadow: none !important;
+    height: 45px;
+    box-shadow: none;
+    text-align: center;
+    border: none !important;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 5px 15px 4px 15px;
 
 }
 
