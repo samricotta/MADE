@@ -24,6 +24,7 @@
           <p><strong>Email</strong> <%= current_user.email%></p>
           <p><strong>Address</strong> <%= current_user.address %></p>
           <%= link_to "Edit your profile", edit_user_registration_path(current_user), class: "btn-all"%>
+
           <hr>
           <h3>Your rating <!-- <small><i class="far fa-heart"></i></small> --></h3>
           <% number_left = 5 - current_user.average_rating %>
