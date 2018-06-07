@@ -17,6 +17,11 @@
             <h3>Ingredients</h3>
              <hr>
             <p><%= @meal.ingredients %></p>
+            <h3>Dietary requirements</h3>
+             <hr>
+             <% @meal.dietaries.each do |dietary| %>
+               <p><%= dietary.name%></p>
+             <% end %>
              <hr>
              <% if current_user %>
               <a> </a>
@@ -87,9 +92,6 @@
                   <% end %>
                 </div>
               <% end %>
-              <% if @order.length == 1 %>
-                <%= link_to "cart", order_path(@order[0]) %>
-              <% end %>
             <% end %>
           </div>
         <!-- <p><%#= link_to "Edit your password", edit_user_registration_path %></p> -->
@@ -114,7 +116,7 @@
             <% if user_signed_in? %>
               <%= render "order_form"%>
             <% else %>
-              <%= link_to t(".sign_in", default: "Login"), new_user_session_path, id: "sign-in-navbar-link", class: "btn-all", data: { toggle: 'modal', target: '#myModal' } %>
+              <%= link_to t(".sign_in", default: "Login"), "#", id: "sign-in-navbar-link", class: "btn-all", data: { toggle: 'modal', target: '#myModal' } %>
             <% end %>
           </div>
           </div>

@@ -14,7 +14,7 @@ class Meal < ApplicationRecord
   validates :ingredients, presence: true
   validates :price_cents, numericality: { greater_than: 0 }
   validates :portions_left, numericality: { greater_than: 0 }
-
+  validates :ready_at, presence: true
 
 
 

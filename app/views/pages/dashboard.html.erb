@@ -8,30 +8,32 @@
   <hr>
   <div class="container-dashboard">
     <div class="flex-container-left">
-      <% if current_user.photo? %>
-        <% photo = cl_image_path current_user.photo %>
-      <% else %>
-        <% photo = "https://images.unsplash.com/photo-1519238397241-5bf4804bd0db?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=68edffd21eecaf32465725da363ebf4a&auto=format&fit=crop&w=1510&q=80" %>
-      <% end %>
-      <div class="img-profile" style="background-image: url(<%= photo %>);"></div>
+      <div class="sticky-container">
+        <% if current_user.photo? %>
+          <% photo = cl_image_path current_user.photo %>
+        <% else %>
+          <% photo = "https://images.unsplash.com/photo-1519238397241-5bf4804bd0db?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=68edffd21eecaf32465725da363ebf4a&auto=format&fit=crop&w=1510&q=80" %>
+        <% end %>
+        <div class="img-profile" style="background-image: url(<%= photo %>);"></div>
 
-      <hr>
-      <div class="profile">
-        <h3>Your details <small><i class="fas fa-user"></i></small></h3>
-        <p><strong>First name</strong> <%=current_user.first_name%></p>
-        <p><strong>Last name</strong> <%=current_user.last_name%></p>
-        <p><strong>Email</strong> <%= current_user.email%></p>
-        <p><strong>Address</strong> <%= current_user.address %></p>
         <hr>
-        <h3>Your rating <!-- <small><i class="far fa-heart"></i></small> --></h3>
-        <% number_left = 5 - current_user.average_rating %>
-        <p><strong>Average rating</strong> <% current_user.average_rating do %>
-           <i class="fas fa-heart"></i>
-          <% end %>
-          <% number_left.times do %>
-            <i class="far fa-heart"></i>
-          <% end %>
-        </p>
+        <div class="profile">
+          <h3>Your details <small><i class="fas fa-user"></i></small></h3>
+          <p><strong>First name</strong> <%=current_user.first_name%></p>
+          <p><strong>Last name</strong> <%=current_user.last_name%></p>
+          <p><strong>Email</strong> <%= current_user.email%></p>
+          <p><strong>Address</strong> <%= current_user.address %></p>
+          <hr>
+          <h3>Your rating <!-- <small><i class="far fa-heart"></i></small> --></h3>
+          <% number_left = 5 - current_user.average_rating %>
+          <p><strong>Average rating</strong> <% current_user.average_rating do %>
+             <i class="fas fa-heart"></i>
+            <% end %>
+            <% number_left.times do %>
+              <i class="far fa-heart"></i>
+            <% end %>
+          </p>
+        </div>
       </div>
     </div>
     <div class="flex-container-right">
