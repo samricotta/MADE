@@ -24,8 +24,8 @@
              <% end %>
              <hr>
              <% if current_user %>
-              <h3>About <%=@meal.user.first_name %></h3>
-                <%= link_to "send message", conversations_path(sender_id: current_user.id, recipient_id: @meal.user.id), method: "post", class: "btn-all" %>
+              <a> </a>
+                <%= link_to "Ask #{@meal.user.first_name} about this meal!", conversations_path(sender_id: current_user.id, recipient_id: @meal.user.id), method: "post", class: "btn-all" %>
             <% end %>
              <hr>
             <h3>More from <%= @meal.user.first_name %></h3>
@@ -104,7 +104,7 @@
           <% else %>
           <% photo = "https://images.unsplash.com/photo-1519238397241-5bf4804bd0db?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=68edffd21eecaf32465725da363ebf4a&auto=format&fit=crop&w=1510&q=80" %>
          <% end %>
-          <div class= "card-user" style= "background-image:linear-gradient(-225deg, rgba(0,0,0,0.2) 0%, rgba(69,68,68,0.8) 100%), url('<%= photo %>')">
+          <div class= "card-user" style= "background-image: url('<%= photo %>')">
           </div>
           <div class="content-right">
             <h3><%= @meal.user.first_name %></h3>
