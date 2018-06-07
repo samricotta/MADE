@@ -17,6 +17,11 @@
             <h3>Ingredients</h3>
              <hr>
             <p><%= @meal.ingredients %></p>
+            <h3>Dietary requirements</h3>
+             <hr>
+             <% @meal.dietaries.each do |dietary| %>
+               <p><%= dietary.name%></p>
+             <% end %>
              <hr>
              <% if current_user %>
               <h3>About <%=@meal.user.first_name %></h3>
@@ -86,9 +91,6 @@
                     <%= f.button :submit, class: "btn btn-all" %>
                   <% end %>
                 </div>
-              <% end %>
-              <% if @order.length == 1 %>
-                <%= link_to "cart", order_path(@order[0]) %>
               <% end %>
             <% end %>
           </div>
