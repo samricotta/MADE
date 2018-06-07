@@ -114,7 +114,7 @@
             <% if user_signed_in? %>
               <%= render "order_form"%>
             <% else %>
-              <%= link_to t(".sign_in", default: "Login"), new_user_session_path, id: "sign-in-navbar-link", class: "btn-all", data: { toggle: 'modal', target: '#myModal' } %>
+              <%= link_to t(".sign_in", default: "Login"), "#", id: "sign-in-navbar-link", class: "btn-all", data: { toggle: 'modal', target: '#myModal' } %>
             <% end %>
           </div>
           </div>
